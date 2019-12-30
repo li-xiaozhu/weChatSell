@@ -1,0 +1,67 @@
+.menu{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    max-width: 750px;
+    border-top: 1px solid #DCDCDC;
+    background: #fff;
+    li{
+        font-size: .2rem;
+        color: #959595;
+        letter-spacing: 0;
+        width: 25%;
+        text-align: center;
+        float: left;
+        padding-bottom: .1rem;
+        padding-top: .15rem;
+        position: relative;
+        span{
+            display: block;
+            width: 100%;
+            height: .44rem;
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            margin-bottom: .1rem;
+        }
+    }
+    .active{
+        color: #3C7CFF;
+    }
+}
+.l1 span{
+    background-image: url('../../../assets/images/nav/eq_normal.png')
+}
+.l1.active span{
+    background-image: url('../../../assets/images/nav/eq.png')
+}
+.l2 span{
+    background-image: url('../../../assets/images/nav/serve_normal.png')
+}
+.l3.active span{
+    background-image: url('../../../assets/images/nav/serve.png')
+}
+.l3 span{
+    background-image: url('../../../assets/images/nav/fault_normal.png')
+}
+.l3.active span{
+    background-image: url('../../../assets/images/nav/fault.png')
+}
+.l4 span{
+    background-image: url('../../../assets/images/nav/mine_normal.png')
+}
+.l5.active span{
+    background-image: url('../../../assets/images/nav/mine.png')
+}
+
+.isAlarm{
+    position: absolute;
+    top: 6px;
+    left: 50%;
+    margin-left: .4rem;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 6px;
+    background: red;
+}

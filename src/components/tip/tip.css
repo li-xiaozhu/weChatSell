@@ -1,0 +1,51 @@
+.tip {
+  background: rgba(0, 0, 0, 0.7);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.tip .content {
+  background: #FFFFFF;
+  border-radius: 17px;
+  width: 280px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 95%;
+}
+.tip .tip_body {
+  padding: 32px 0;
+  text-align: center;
+  font-size: 20px;
+  color: #323232;
+  letter-spacing: 0;
+}
+.tip .tip_foot {
+  font-size: 18px;
+  color: #3C7CFF;
+  letter-spacing: 0;
+  border-top: 1px solid #DCDCDC;
+}
+.tip .tip_foot:after {
+  content: '';
+  clear: both;
+  display: block;
+}
+.tip .tip_foot span {
+  display: block;
+  float: left;
+  width: 50%;
+  text-align: center;
+  border-left: 1px solid #DCDCDC;
+  line-height: 44px;
+}
+.tip .tip_foot_detail span{
+  width: 100% !important;
+}
+
+.tip .tip_foot span:first-child {
+  border-left: none;
+}

@@ -1,0 +1,32 @@
+.timerSwitch {
+  margin-top: 12px;
+}
+.tTimer {
+  margin-right: 15px;
+}
+.timer .list {
+  color: #333333;
+  letter-spacing: 0.9px;
+  font-size: 12px;
+  line-height: 35px;
+  padding: 0 10px;
+  background: #FFFFFF;
+  box-shadow: 0 0 3px 0 rgba(220, 220, 220, 0.5);
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+.timer .list .timerSwitch {
+  margin-top: 8px;
+}
+.timer .time {
+  color: #969696;
+  letter-spacing: 0.78px;
+}
+.timer .rooms {
+  color: #3C7CFF;
+  letter-spacing: 0.78px;
+  border-top: 1px solid #E1E1E1;
+}
+.timer .closeRooms {
+  color: #FEC25A;
+}

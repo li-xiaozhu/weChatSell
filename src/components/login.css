@@ -1,0 +1,112 @@
+.login {
+  background-image: url('../assets/images/loginBg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+.register {
+  background-image: url('../assets/images/re.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+button {
+  overflow: hidden;
+}
+input {
+  border: none;
+  border-bottom: 1px solid #DCDCDC;
+  height: 44px;
+  width: 100%;
+  padding-left: 10px;
+}
+.inputGroup {
+  border: 1px solid #DDDDDD;
+  margin-top: 50%;
+}
+.inputGroup input {
+  padding-left: 40px;
+}
+.inputGroup li {
+  position: relative;
+}
+.inputGroup li:last-child input {
+  border-bottom: none;
+}
+.icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  display: inline-block;
+  width: 22px;
+  height: 22px;
+  margin-top: -11px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+.icon-phone {
+  background-image: url('../assets/images/phone.png');
+}
+.icon-ma {
+  background-image: url('../assets//images//ma.png');
+}
+.forget_pwd {
+  text-align: right;
+  font-size: 12px;
+  color: #fff;
+  margin-top: 10px;
+}
+.btn_group {
+  margin-top: 55px;
+}
+.fixed-foot {
+  position: fixed;
+  bottom: 45px;
+  text-align: center;
+  width: 100%;
+  left: 0;
+}
+.fixed-foot p {
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: 1.06px;
+}
+.fixed-foot a {
+  line-height: 2;
+  font-size: 16px;
+}
+.register .inputGroup {
+  margin-top: 30%;
+}
+.icon-pwd {
+  background-image: url('../assets/images//pwd.png');
+}
+.chect_server {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #FFFFFF;
+  letter-spacing: 1.06px;
+  text-align: left;
+  line-height: 20px;
+}
+.get_pwd {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  font-size: 11px;
+  color: #FEC25A;
+  letter-spacing: 0.97px;
+  text-align: center;
+  padding: 5px 10px;
+  background: #FFFFFF;
+  border: 1px solid rgba(245, 166, 34, 0.6);
+  border-radius: 2px;
+  transform: translateY(-50%);
+}
