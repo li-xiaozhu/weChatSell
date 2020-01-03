@@ -884,11 +884,11 @@
             },
             changeEqMain() {
                 var status = this.eqInfo.equipmentStatus;
-                if (status == 1) {
-                    this.closeEq();
-                } else {
+                if (status == 0) {
                     this.stopInit();
                     this.showModel = true;
+                } else {
+                    this.closeEq();
                 }
             },
             changeEqMode() {
