@@ -1,121 +1,121 @@
 <template>
-    <div class="headFixed" @click="hideSomething">
-        <div class="detail_head fixed_head">
-            <div class="">
-                <div class="content">
-                    <div class="go_back">
-                        <span @click="goBack" class="goBackBtn"></span>
-                        {{eqInfo?eqInfo.equipmentName:''}}
-                        <img v-show="eqInfo&&!firstRequest" @click="changeMenu" class="right menuImg" width="25"
-                             src="../../../assets/images/menu.png" alt="">
-                    </div>
-                </div>
-            </div>
-            <div class="menu" v-show="showMenu">
-                <ul>
-                    <!--<router-link :to="'/equipment/info/'+this.getId()">-->
-                    <router-link :to="'/equipment/info/'+this.getId()">
-                        <li>设备信息</li>
-                    </router-link>
-
-                    <!--</router-link>-->
-                    <router-link :to="'/equipment/status/'+this.getId()" v-show="eqInfo&&eqInfo.equipmentType==1">
-                        <li>设备状态</li>
-                    </router-link>
-                    <!--<li>设备密码</li>-->
-                    <li @click="eqUnbind">解除绑定</li>
-                </ul>
-            </div>
+  <div class="headFixed" @click="hideSomething">
+    <div class="detail_head fixed_head">
+      <div class="">
+        <div class="content">
+          <div class="go_back">
+            <span @click="goBack" class="goBackBtn"></span>
+            {{eqInfo?eqInfo.equipmentName:''}}
+            <img v-show="eqInfo&&!firstRequest" @click="changeMenu" class="right menuImg" width="25"
+                 src="../../../assets/images/menu.png" alt="">
+          </div>
         </div>
-        <div class="noInfo" v-show="showEmpty">
-            暂无信息
-        </div>
-        <div v-show="!isRequest">
-            <div class="eqInfoDetail" v-show="eqInfo">
-                <div>
-                    <div class="detail_top">
-                        <span v-show="eqMode==2" class="hotBg"></span>
-                        <span v-show="eqMode==1" class="coolBg"></span>
-                        <div></div>
+      </div>
+      <div class="menu" v-show="showMenu">
+        <ul>
+          <!--<router-link :to="'/equipment/info/'+this.getId()">-->
+          <router-link :to="'/equipment/info/'+this.getId()">
+            <li>设备信息</li>
+          </router-link>
 
-                        <div class="degrees">
-                            <canvas id="clock" width="220px" height="220px"></canvas>
-                            <canvas id="pointer" width="220px" height="220px"></canvas>
-                            <p :class="this.drawDegree==null?'noDegree':''">
-                                {{
-                                this.drawDegree==null?'暂无设置':this.drawDegree+'℃'
-                                }}
-                                <span class="type" v-if="eqMode==1"><span>制冷</span></span>
-                                <span class="type" v-else-if="eqMode==2"><span>制热</span></span>
-                                <span class="type" v-else-if="eqMode==3"><span>通风</span></span>
-                                <span class="type" v-else><span></span></span>
-                            </p>
-                        </div>
-                        <!--            <div class="waterTem" v-show="eqInfo.equipmentType==1"><span-->
-                        <!--              class="degree">{{eqInfo.coolInWaterTemerature}}</span>回水温度-->
-                        <!--            </div>-->
-                    </div>
-                    <ul class="setDegree clear">
-                        <li class="left">
+          <!--</router-link>-->
+          <router-link :to="'/equipment/status/'+this.getId()" v-show="eqInfo&&eqInfo.equipmentType==1">
+            <li>设备状态</li>
+          </router-link>
+          <!--<li>设备密码</li>-->
+          <li @click="eqUnbind">解除绑定</li>
+        </ul>
+      </div>
+    </div>
+    <div class="noInfo" v-show="showEmpty">
+      暂无信息
+    </div>
+    <div v-show="!isRequest">
+      <div class="eqInfoDetail" v-show="eqInfo">
+        <div>
+          <div class="detail_top">
+            <span v-show="eqMode==2" class="hotBg"></span>
+            <span v-show="eqMode==1" class="coolBg"></span>
+            <div></div>
+
+            <div class="degrees">
+              <canvas id="clock" width="220px" height="220px"></canvas>
+              <canvas id="pointer" width="220px" height="220px"></canvas>
+              <p :class="this.drawDegree==null?'noDegree':''">
+                {{
+                this.drawDegree==null?'暂无设置':this.drawDegree+'℃'
+                }}
+                <span class="type" v-if="eqMode==1"><span>制冷</span></span>
+                <span class="type" v-else-if="eqMode==2"><span>制热</span></span>
+                <span class="type" v-else-if="eqMode==3"><span>通风</span></span>
+                <span class="type" v-else><span></span></span>
+              </p>
+            </div>
+            <!--            <div class="waterTem" v-show="eqInfo.equipmentType==1"><span-->
+            <!--              class="degree">{{eqInfo.coolInWaterTemerature}}</span>回水温度-->
+            <!--            </div>-->
+          </div>
+          <ul class="setDegree clear">
+            <li class="left">
                         <span class="text-center eqDegree"
                               v-show="eqInfo.equipmentMode==1&&eqInfo.equipmentCoolTemperature">
                             <span>
                                 {{eqInfo.equipmentCoolTemperature}}<span class="unit">℃</span>
                             </span>设定温度
                         </span>
-                            <span class="text-center eqDegree"
-                                  v-show="eqInfo.equipmentMode==2&&eqInfo.equipmentHeatTemperature">
+              <span class="text-center eqDegree"
+                    v-show="eqInfo.equipmentMode==2&&eqInfo.equipmentHeatTemperature">
                             <span>
                                 {{eqInfo.equipmentHeatTemperature}}<span class="unit">℃</span>
                             </span>设定温度
                         </span>
 
-                            <span class="text-center eqDegree"
-                                  v-show="eqInfo.equipmentMode==3&&eqInfo.equipmentHeatTemperature">
+              <span class="text-center eqDegree"
+                    v-show="eqInfo.equipmentMode==3&&eqInfo.equipmentHeatTemperature">
                             <span>
                                 {{eqInfo.equipmentHeatTemperature}}<span class="unit">℃</span>
                             </span>设定温度
                         </span>
-                        </li>
-                        <li class="right">
-                            <p class="setDegreeBtn" v-show="eqMode!=3" @click="showDegreeModel"></p>
-                        </li>
-                    </ul>
-                </div>
+            </li>
+            <li class="right">
+              <p class="setDegreeBtn" v-show="eqMode!=3" @click="showDegreeModel"></p>
+            </li>
+          </ul>
+        </div>
 
-                <div class="eqType">
-                    <ul class="clear">
+        <div class="eqType">
+          <ul class="clear">
 
 
-                        <!--          开关切换-->
-                        <li class="li-open li-open2" @click="shutDown" v-if="eqInfo.equipmentStatus==1"><span></span>关机
-                        </li>
-                        <li class="li-open" @click="eqStart" v-else><span></span>开机</li>
+            <!--          开关切换-->
+            <li class="li-open" @click="eqStart" v-if="eqInfo.equipmentStatus==0"><span></span>开机</li>
+            <li class="li-open li-open2" @click="shutDown" v-else><span></span>关机
+            </li>
 
-                        <!--          切换模式-->
-                        <li class="li-mode" @click="changeEqMode" v-if="eqInfo.equipmentType==2"><span></span>模式</li>
-                        <li class="li-mode" @click="changeEqMain" v-else><span></span>模式</li>
+            <!--          切换模式-->
+            <li class="li-mode" @click="changeEqMode" v-if="eqInfo.equipmentType==2"><span></span>模式</li>
+            <li class="li-mode" @click="changeEqMain" v-else><span></span>模式</li>
 
-                        <!--          告警-->
-                        <li class="li-alert" :class="eqInfo.isAlarm==1?'alert-dannger':''" v-if="type==1">
-                            <router-link :to="'/fault/'+this.getId()">
-                                <span></span>报警
-                            </router-link>
-                        </li>
+            <!--          告警-->
+            <li class="li-alert" :class="eqInfo.isAlarm==1?'alert-dannger':''" v-if="type==1">
+              <router-link :to="'/fault/'+this.getId()">
+                <span></span>报警
+              </router-link>
+            </li>
 
-                        <li class="li3">
-                            <router-link :to="'/equipment/timer/'+this.getId()">
-                                <span></span>定时
-                            </router-link>
-                        </li>
-                        <li class="li4" v-if="type==2" @click="showWindSpeed"><span></span>风速</li>
-                    </ul>
-                </div>
+            <li class="li3">
+              <router-link :to="'/equipment/timer/'+this.getId()">
+                <span></span>定时
+              </router-link>
+            </li>
+            <li class="li4" v-if="type==2" @click="showWindSpeed"><span></span>风速</li>
+          </ul>
+        </div>
 
-                <div class="list list_normal list_no_arrow list_info" style="margin-top:10px">
-                    <div class="item" v-show="type==2">
-                        <div class="clear">
-                            <p>当前风速 <span class="right" @click="showWindSpeed()">
+        <div class="list list_normal list_no_arrow list_info" style="margin-top:10px">
+          <div class="item" v-show="type==2">
+            <div class="clear">
+              <p>当前风速 <span class="right" @click="showWindSpeed()">
                                   {{
                                     // equipmentFanMode==1?'on':
                                     equipmentFanMode==0?'自动':
@@ -123,125 +123,125 @@
                                     equipmentFanMode==3?'低速':
                                     equipmentFanMode==4?'中速':'高速'
                                   }}
-                                <!--              <a class="editWind">修改</a>-->
+                <!--              <a class="editWind">修改</a>-->
                             </span></p>
-                        </div>
-                    </div>
-                    <div class="item" v-show="eqInfo.room||eqInfo.useScene">
-                        <div class="clear">
-                            <p>场景
-                                <span class="right">
+            </div>
+          </div>
+          <div class="item" v-show="eqInfo.room||eqInfo.useScene">
+            <div class="clear">
+              <p>场景
+                <span class="right">
                   {{eqInfo.useScene}} {{eqInfo.room}}
                   <i class="icon-edit" @click="chooseScene"></i>
               </span></p>
-                        </div>
-                    </div>
-                </div>
             </div>
-
-            <div class="tip detail_tip" v-show="showTip">
-                <div class="content">
-                    <div class="tip_body">
-                        <div class="modal-warning">
-                            <span></span>
-                            <p>温馨提示：请关机后再切换模式</p>
-                        </div>
-
-                    </div>
-                    <div class="tip_foot tip_foot_detail">
-                        <span @click="hideModal">取消</span>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
+      </div>
 
-
-        <!--        关机提示-->
-        <div class="tip detail_tip" v-show="closeTip">
-            <div class="content">
-                <div class="tip_body closeTip_body">
-                    <div class="modal-warning">
-                        <span :class='this.closeIcon'></span>
-                        <p>{{this.closeText}}</p>
-                    </div>
-                </div>
+      <div class="tip detail_tip" v-show="showTip">
+        <div class="content">
+          <div class="tip_body">
+            <div class="modal-warning">
+              <span></span>
+              <p>温馨提示：请关机后再切换模式</p>
             </div>
+
+          </div>
+          <div class="tip_foot tip_foot_detail">
+            <span @click="hideModal">取消</span>
+          </div>
         </div>
-
-
-        <mt-popup
-            v-model="showModel"
-            modal="false"
-            class="pubPopup"
-            popup-transition="popup-fade"
-            position="bottom">
-            <p class="tipText">模式切换</p>
-            <mt-radio
-                title=""
-                v-model="eqModeVal"
-                :options="type==2?this.modelListFan:this.modelList"
-            >
-            </mt-radio>
-            <div class="btns">
-                <mt-button size="large" class="btn-orange" @click="changeMode">确定</mt-button>
-                <mt-button size="large" @click="cancelModel">取消</mt-button>
-            </div>
-        </mt-popup>
-
-        <mt-popup
-            v-model="popupVisible"
-            modal="false"
-            class="pubPopup"
-            popup-transition="popup-fade"
-            position="bottom">
-            <p class="tipText">修改风速</p>
-            <mt-radio
-                title=""
-                v-model="value"
-                :options="this.checklist"
-            >
-            </mt-radio>
-            <div class="btns">
-                <mt-button size="large" class="btn-orange" @click="adjustWindSpeed">确定</mt-button>
-                <mt-button size="large" @click="cancelTimer">取消</mt-button>
-            </div>
-        </mt-popup>
-
-        <!--    温度切换-->
-        <mt-popup
-            v-model="showDegrees"
-            class="pubPopup"
-            defaultIndex="[3]"
-            position="bottom">
-            <p class="tipText tip-text-border">温度选择</p>
-            <mt-picker :slots="type==2?slotsFan:(eqMode==1?coolMain:hotMain)"
-                       @change="onValuesChange"
-                       ref="mainDegrees"
-            ></mt-picker>
-            <div class="btns">
-                <mt-button size="large" class="btn-orange" @click="changeDegree">确定</mt-button>
-                <mt-button size="large" @click="cancelDegreeModel">取消</mt-button>
-            </div>
-        </mt-popup>
-
-        <!--解绑弹窗-->
-        <div class="tip detail_tip" v-show="showUnBind">
-            <div class="content">
-                <div class="tip_body">
-                    <div class="modal-warning">
-                        <span></span>
-                        <p>温馨提示：确定解除绑定吗</p>
-                    </div>
-
-                </div>
-                <div class="tip_foot">
-                    <span @click="hideModalCom('showUnBind')">取消</span>
-                    <span @click="sureBind">确定</span>
-                </div>
-            </div>
-        </div>
-
+      </div>
     </div>
+
+
+    <!--        关机提示-->
+    <div class="tip detail_tip" v-show="closeTip">
+      <div class="content">
+        <div class="tip_body closeTip_body">
+          <div class="modal-warning">
+            <span :class='this.closeIcon'></span>
+            <p>{{this.closeText}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <mt-popup
+        v-model="showModel"
+        modal="false"
+        class="pubPopup"
+        popup-transition="popup-fade"
+        position="bottom">
+      <p class="tipText">模式切换</p>
+      <mt-radio
+          title=""
+          v-model="eqModeVal"
+          :options="type==2?this.modelListFan:this.modelList"
+      >
+      </mt-radio>
+      <div class="btns">
+        <mt-button size="large" class="btn-orange" @click="changeMode">确定</mt-button>
+        <mt-button size="large" @click="cancelModel">取消</mt-button>
+      </div>
+    </mt-popup>
+
+    <mt-popup
+        v-model="popupVisible"
+        modal="false"
+        class="pubPopup"
+        popup-transition="popup-fade"
+        position="bottom">
+      <p class="tipText">修改风速</p>
+      <mt-radio
+          title=""
+          v-model="value"
+          :options="this.checklist"
+      >
+      </mt-radio>
+      <div class="btns">
+        <mt-button size="large" class="btn-orange" @click="adjustWindSpeed">确定</mt-button>
+        <mt-button size="large" @click="cancelTimer">取消</mt-button>
+      </div>
+    </mt-popup>
+
+    <!--    温度切换-->
+    <mt-popup
+        v-model="showDegrees"
+        class="pubPopup"
+        defaultIndex="[3]"
+        position="bottom">
+      <p class="tipText tip-text-border">温度选择</p>
+      <mt-picker :slots="type==2?slotsFan:(eqMode==1?coolMain:hotMain)"
+                 @change="onValuesChange"
+                 ref="mainDegrees"
+      ></mt-picker>
+      <div class="btns">
+        <mt-button size="large" class="btn-orange" @click="changeDegree">确定</mt-button>
+        <mt-button size="large" @click="cancelDegreeModel">取消</mt-button>
+      </div>
+    </mt-popup>
+
+    <!--解绑弹窗-->
+    <div class="tip detail_tip" v-show="showUnBind">
+      <div class="content">
+        <div class="tip_body">
+          <div class="modal-warning">
+            <span></span>
+            <p>温馨提示：确定解除绑定吗</p>
+          </div>
+
+        </div>
+        <div class="tip_foot">
+          <span @click="hideModalCom('showUnBind')">取消</span>
+          <span @click="sureBind">确定</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </template>
 <script>
     import Swiper from 'swiper';
@@ -933,12 +933,12 @@
     }
 </script>
 <style scoped>
-    @import url('../../../assets/list.css');
-    @import url('../../tip/tip.css');
-    @import url('./detail.css');
+  @import url('../../../assets/list.css');
+  @import url('../../tip/tip.css');
+  @import url('./detail.css');
 
-    .noDegree {
-        font-size: 23px !important;
-    }
+  .noDegree {
+    font-size: 23px !important;
+  }
 </style>
 
