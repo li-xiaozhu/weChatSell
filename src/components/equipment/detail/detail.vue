@@ -383,7 +383,9 @@
                 showUnBind: false,
                 closeTip: false,
                 closeText: '关机中...',
-                closeIcon: 'icon-loading-off'
+                closeIcon: 'icon-loading-off',
+                path:"ws://www.zhilianyueju.com/websocketDemo/",
+                socket:""
             }
         },
         beforeMount() {
@@ -466,6 +468,20 @@
                     this.drawGreenCricle(degrees);
                     this.drawCircle(degrees);
                 }
+                if(typeof(WebSocket) === "undefined"){
+                  alert("您的浏览器不支持socket")
+                }else{
+                  // 实例化socket
+                  this.socket = new WebSocket(this.path+this.eqInfo.equipmentNumber)
+                  // 监听socket连接
+                  this.socket.onopen = this.socketopen
+                  // 监听socket错误信息
+                  this.socket.onerror = this.socketerror
+                  // 监听socket消息
+                  this.socket.onmessage = this.getMessage
+                  // 关闭socket消息
+                  this.socket.onclose = this.socketclose
+                }
             },
             eqDetail(id) {
                 let self = this;
@@ -526,11 +542,12 @@
 
                         self.initDraw();
 
-                        if (!self.stopRequest) {
-                            setTimeout(() => {
-                                self.init();
-                            }, 3 * 60 * 1000)
-                        }
+                        //取消定时刷新页面，改为websocket推送温度
+                        // if (!self.stopRequest) {
+                        //     setTimeout(() => {
+                        //         self.init();
+                        //     }, 3 * 60 * 1000)
+                        // }
 
                     } else {
                         this.showEmpty = true;
@@ -928,6 +945,20 @@
             },
             chooseScene() {
                 this.$router.push({path: this.PATH.getChooseHome() + '2?id=' + this.getId()})
+            },
+            socketopen: function () {
+              console.log("socket连接成功")
+            },
+            socketerror: function () {
+              console.log("连接错误")
+            },
+            getMessage: function (msg) {
+              this.drawDegree = msg.data;
+              console.log(msg.data)
+            },
+            socketclose: function () {
+              console.log("socket已经关闭")
+              this.socket.close()
             }
         }
     }
