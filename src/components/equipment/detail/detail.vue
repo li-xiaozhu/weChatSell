@@ -385,7 +385,8 @@
                 closeText: '关机中...',
                 closeIcon: 'icon-loading-off',
                 path:"ws://www.zhilianyueju.com/websocketDemo/",
-                socket:""
+                socket:"",
+                drawDegree: null
             }
         },
         beforeMount() {
@@ -468,20 +469,6 @@
                     this.drawGreenCricle(degrees);
                     this.drawCircle(degrees);
                 }
-                if(typeof(WebSocket) === "undefined"){
-                  alert("您的浏览器不支持socket")
-                }else{
-                  // 实例化socket
-                  this.socket = new WebSocket(this.path+this.eqInfo.equipmentNumber)
-                  // 监听socket连接
-                  this.socket.onopen = this.socketopen
-                  // 监听socket错误信息
-                  this.socket.onerror = this.socketerror
-                  // 监听socket消息
-                  this.socket.onmessage = this.getMessage
-                  // 关闭socket消息
-                  this.socket.onclose = this.socketclose
-                }
             },
             eqDetail(id) {
                 let self = this;
@@ -492,6 +479,25 @@
                 }
                 this.Api.eqDetail(id, (msg) => {
                     self.eqInfo = msg.body;
+
+                    if (this.firstRequest) {
+                      //初始化websocket
+                      if (typeof (WebSocket) === "undefined") {
+                        alert("您的浏览器不支持socket")
+                      } else {
+                        // 实例化socket
+                        self.socket = new WebSocket(self.path + self.eqInfo.equipmentNumber)
+                        // 监听socket连接
+                        self.socket.onopen = self.socketopen
+                        // 监听socket错误信息
+                        self.socket.onerror = self.socketerror
+                        // 监听socket消息
+                        self.socket.onmessage = self.getMessage
+                        // 关闭socket消息
+                        self.socket.onclose = self.socketclose
+                      }
+                    }
+
                     this.alreadyLoad = true;
                     Indicator.close();
                     this.firstRequest = false;
@@ -954,6 +960,7 @@
             },
             getMessage: function (msg) {
               this.drawDegree = msg.data;
+              this.initDraw();
               console.log(msg.data)
             },
             socketclose: function () {
