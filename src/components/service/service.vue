@@ -2,8 +2,8 @@
     <div>
         <div class="tab">
             <div class="go_back"><span @click="goBack" class="goBackBtn"></span></div>
-            <span @click="showTab(0)" :class="tab==0?'active':''">推荐</span>
-            <span @click="showTab(1)" :class="tab==1?'active':''">关注</span>
+            <span @click="showTab(0)" :class="tab==0?'-active':''">产品应用</span>
+<!--            <span @click="showTab(1)" :class="tab==1?'active':''">关注</span>-->
         </div>
         <ul v-show="tab==0">
             <li class="serviceList">
@@ -12,16 +12,16 @@
                     <span class="time">5月26日</span>
                     <span class="bgImg" style="background-image: url('https://ss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=e605ea06b60e7bec3cda05e11f2eb9fa/960a304e251f95ca0ecc6cbfc7177f3e670952fa.jpg')"></span>
                     <div class="con">随着时代的迅速发展，智能科技的与时俱进。智能家居已经融入到我们的生活，成为我们不可分离的一部分。小编给您带来最舒适的智能体验…</div>
-                    <div>
-                        <ul class="smallPic">
-                            <li></li>
-                            <li></li>
-                            <li></li>
-                        </ul>
-                        <span class="num">46人阅读</span>
-                        <span class="faIcon"></span>
-                    </div>
                 </router-link>
+                <div>
+                    <ul class="smallPic">
+                        <li></li>
+                        <li></li>
+                        <li></li>
+                    </ul>
+                    <span class="num">46人阅读</span>
+                    <span class="faIcon"></span>
+                </div>
             </li>
         </ul>
 
