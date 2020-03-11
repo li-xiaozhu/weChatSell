@@ -1,5 +1,5 @@
 <template>
-  <div class="loadMoreWrapper" style="touch-action: none">
+  <div class="loadMoreWrapper">
     <div class="tab">
       <div class="go_back"><span @click="goBack" class="goBackBtn"></span></div>
       <span @click="showTab(0)" :class="tab==0?'-active':''">产品应用</span>
@@ -137,7 +137,7 @@
     width: 44px;
     height: 44px;
     float: left;
-    position: absolute;
+    position: static;
     top: 0;
     left: 0;
   }
