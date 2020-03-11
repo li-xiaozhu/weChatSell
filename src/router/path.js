@@ -21,7 +21,7 @@ let Path = {
     Self: '/personal/self',
     ResetPhone: '/personal/phone',
     Service: '/service',
-    ServiceDetail: '/service/detail',
+    ServiceDetail: '/service/detail/:id',
     AboutUs: '/about',
 };
 
