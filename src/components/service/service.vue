@@ -12,7 +12,7 @@
             <p class="title">{{item.articleTitle}}</p>
             <span class="time">{{item.createTime}}</span>
             <span class="bgImg"
-                  :style="{backgroundImage: 'url('+item.articleImgName+')'}"></span>
+                  :style="{backgroundImage: 'url(data:image/jpg;base64,'+item.articleImgContent+')'}"></span>
             <div class="con" v-html="item.articleContent"></div>
           </router-link>
         </li>
@@ -116,7 +116,7 @@
             isHasMore(lastPage) {
                 if (lastPage) {
                     this.allLoaded = true;
-                    this.loadText = '没有更多信息了...'
+                    this.loadText = '没有更多了...'
 
                 } else {
                     this.allLoaded = false;
