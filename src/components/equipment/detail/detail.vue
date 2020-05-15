@@ -34,8 +34,8 @@
       <div class="eqInfoDetail" v-show="eqInfo">
         <div>
           <div class="detail_top">
-            <span v-show="eqMode==2" class="hotBg"></span>
-            <span v-show="eqMode==1" class="coolBg"></span>
+            <span v-show="eqInfo.equipmentMode==2" class="hotBg"></span>
+            <span v-show="eqInfo.equipmentMode==1" class="coolBg"></span>
             <div></div>
 
             <div class="degrees">
@@ -45,9 +45,9 @@
                 {{
                 this.drawDegree==null?'暂无设置':this.drawDegree+'℃'
                 }}
-                <span class="type" v-if="eqMode==1"><span>制冷</span></span>
-                <span class="type" v-else-if="eqMode==2"><span>制热</span></span>
-                <span class="type" v-else-if="eqMode==3"><span>通风</span></span>
+                <span class="type" v-if="eqInfo.equipmentMode==1"><span>制冷</span></span>
+                <span class="type" v-else-if="eqInfo.equipmentMode==2"><span>制热</span></span>
+                <span class="type" v-else-if="eqInfo.equipmentMode==3"><span>通风</span></span>
                 <span class="type" v-else><span></span></span>
               </p>
             </div>
@@ -78,7 +78,7 @@
                         </span>
             </li>
             <li class="right">
-              <p class="setDegreeBtn" v-show="eqMode!=3" @click="showDegreeModel"></p>
+              <p class="setDegreeBtn" v-show="eqInfo.equipmentMode!=3" @click="showDegreeModel"></p>
             </li>
           </ul>
         </div>
@@ -214,7 +214,7 @@
         defaultIndex="[3]"
         position="bottom">
       <p class="tipText tip-text-border">温度选择</p>
-      <mt-picker :slots="type==2?slotsFan:(eqMode==1?coolMain:hotMain)"
+      <mt-picker :slots="type==2?slotsFan:(eqInfo.equipmentMode==1?coolMain:hotMain)"
                  @change="onValuesChange"
                  ref="mainDegrees"
       ></mt-picker>
@@ -259,8 +259,6 @@
                 showTip: false,
                 eqId: this.$route.params.id,
                 totalDegree: 45,
-                eqStatus: 1,
-                eqMode: 3,
                 eqInfo: {
                     coolInWaterTemerature: null,
                     coolOutWaterTemerature: null,
@@ -384,8 +382,8 @@
                 closeTip: false,
                 closeText: '关机中...',
                 closeIcon: 'icon-loading-off',
-                path:"ws://www.zhilianyueju.com/websocketDemo/",
-                socket:"",
+                path: "ws://www.zhilianyueju.com/websocketDemo/",
+                socket: "",
                 drawDegree: null
             }
         },
@@ -433,6 +431,7 @@
         },
         beforeDestroy() {
             this.stopRequest = true;
+            this.socketclose();
         },
         methods: {
             init() {
@@ -445,17 +444,17 @@
                 return this.$route.params.id;
             },
             watchDegree() {
-                if (this.eqMode == 1) {
+                if (this.eqInfo.equipmentMode == 1) {
                     this.adjustCoolTemperature(this.degrees);
-                } else if (this.eqMode == 2) {
+                } else if (this.eqInfo.equipmentMode == 2) {
                     this.adjustHeatTemperature(this.degrees);
                 }
             },
             changeDegree() {
                 let degree = this.valueDegrees[0];
-                if (this.eqMode == 1) {
+                if (this.eqInfo.equipmentMode == 1) {
                     this.adjustCoolTemperature(degree);
-                } else if (this.eqMode == 2) {
+                } else if (this.eqInfo.equipmentMode == 2) {
                     this.adjustHeatTemperature(degree);
                 }
 
@@ -481,21 +480,21 @@
                     self.eqInfo = msg.body;
 
                     if (this.firstRequest) {
-                      //初始化websocket
-                      if (typeof (WebSocket) === "undefined") {
-                        alert("您的浏览器不支持socket")
-                      } else {
-                        // 实例化socket
-                        self.socket = new WebSocket(self.path + self.eqInfo.equipmentNumber)
-                        // 监听socket连接
-                        self.socket.onopen = self.socketopen
-                        // 监听socket错误信息
-                        self.socket.onerror = self.socketerror
-                        // 监听socket消息
-                        self.socket.onmessage = self.getMessage
-                        // 关闭socket消息
-                        self.socket.onclose = self.socketclose
-                      }
+                        //初始化websocket
+                        if (typeof (WebSocket) === "undefined") {
+                            alert("您的浏览器不支持socket")
+                        } else {
+                            // 实例化socket
+                            self.socket = new WebSocket(self.path + self.eqInfo.equipmentNumber)
+                            // 监听socket连接
+                            self.socket.onopen = self.socketopen
+                            // 监听socket错误信息
+                            self.socket.onerror = self.socketerror
+                            // 监听socket消息
+                            self.socket.onmessage = self.getMessage
+                            // 关闭socket消息
+                            self.socket.onclose = self.socketclose
+                        }
                     }
 
                     this.alreadyLoad = true;
@@ -504,6 +503,8 @@
                     this.isRequest = false;
                     if (msg.body) {
                         self.type = msg.body.equipmentType;
+
+                        // 获取设定温度
                         if (msg.body.equipmentMode == 1) {
                             self.degrees = msg.body.equipmentCoolTemperature;
                         }
@@ -515,9 +516,11 @@
                         if (msg.body.equipmentMode == 3) {
                             self.degrees = msg.body.equipmentHeatTemperature;
                         }
+                        let arrD = [];
+                        arrD.push(self.degrees);
+                        self.valueDegrees = arrD;
 
-                        self.eqStatus = msg.body.equipmentStatus;
-                        self.eqMode = msg.body.equipmentMode;
+
                         self.eqModeVal = String(msg.body.equipmentMode);
                         let arr = [];
                         if (msg.body.equipmentMode == 3) {
@@ -533,10 +536,6 @@
                             }
                             self.roomTep = arr;
                         }
-
-                        let arrD = [];
-                        arrD.push(self.degrees);
-                        self.valueDegrees = arrD;
 
                         // 温度仪表盘温度
                         if (msg.body.equipmentType == 1) {//主机
@@ -654,7 +653,7 @@
                     } else {
                         Toast(msg.message);
                         this.hideModal();
-                        this.eqModeVal = String(this.eqMode);
+                        this.eqModeVal = String(this.eqInfo.equipmentMode);
                     }
                 })
             },
@@ -671,7 +670,7 @@
                     } else {
                         Toast(msg.message);
                         this.hideModal();
-                        this.eqModeVal = String(this.eqMode);
+                        this.eqModeVal = String(this.eqInfo.equipmentMode);
                     }
                 })
             },
@@ -927,7 +926,6 @@
                     this.coolMain[0].defaultIndex = this.degrees - 7
                 }
                 if (this.eqInfo.equipmentMode == 2) {
-                    console.log(this.degrees)
                     this.hotMain[0].defaultIndex = this.degrees - 15
                 }
                 // if (eqInfo.equipmentMode == 3) {
@@ -953,19 +951,100 @@
                 this.$router.push({path: this.PATH.getChooseHome() + '2?id=' + this.getId()})
             },
             socketopen: function () {
-              console.log("socket连接成功")
+                console.log("socket连接成功")
             },
             socketerror: function () {
-              console.log("连接错误")
+                console.log("连接错误")
             },
             getMessage: function (msg) {
-              this.drawDegree = msg.data;
-              this.initDraw();
-              console.log(msg.data)
+                // this.drawDegree = msg.data;
+                // this.initDraw();
+
+                console.log(msg)
+
+                let data = msg.data;
+
+                //设备上设定的制冷的温度
+                if (data.equipmentCoolTemperature) {
+                    this.eqInfo.equipmentCoolTemperature = data.equipmentCoolTemperature;
+
+                    // 获取设定温度
+                    if (this.eqInfo.equipmentMode == 1) {
+                        this.degrees = data.equipmentCoolTemperature;
+
+                        let arrD = [];
+                        arrD.push(this.degrees);
+                        this.valueDegrees = arrD;
+                    }
+                }
+                //设备上设定的制热的温度
+                if (data.equipmentHeatTemperature) {
+                    this.eqInfo.equipmentHeatTemperature = data.equipmentHeatTemperature;
+                }
+                //设备上设定的制冷的温度
+                if (data.sendInWaterTemerature) {
+                    this.eqInfo.sendInWaterTemerature = data.sendInWaterTemerature;
+
+                    //主机，仪表盘温度显示的是sendInWaterTemerature
+                    if (this.eqInfo.equipmentType == 1) {//主机
+                        this.drawDegree = data.sendInWaterTemerature;
+                        this.initDraw();
+                    }
+                }
+                //设备上的室内温度
+                if (data.equipmentRoomTemperature) {
+                    this.eqInfo.equipmentRoomTemperature = data.equipmentRoomTemperature;
+
+                    //风盘，仪表盘温度显示的是equipmentRoomTemperature
+                    if (this.eqInfo.equipmentType == 2) {//风盘
+                        this.drawDegree = data.equipmentRoomTemperature;
+                        this.initDraw();
+                    }
+                }
+                //设备状态
+                if (data.equipmentStatus) {
+                    this.eqInfo.equipmentStatus = data.equipmentStatus;
+                }
+                //送水
+                if (data.sendOutWaterTemerature) {
+                    this.eqInfo.sendOutWaterTemerature = data.sendOutWaterTemerature;
+                }
+                //水冷：冷凝回水温度 用于主机设备
+                if (data.coolInWaterTemerature) {
+                    this.eqInfo.coolInWaterTemerature = data.coolInWaterTemerature;
+                }
+                //水冷：冷凝出水温度 用于主机设备
+                if (data.coolOutWaterTemerature) {
+                    this.eqInfo.coolOutWaterTemerature = data.coolOutWaterTemerature;
+                }
+                //设备模式 主机( 1 制冷 2 制热) ;风盘(1 制冷，2 制热，3 通风 )
+                if (data.equipmentMode) {
+                    this.eqInfo.equipmentMode = data.equipmentMode;
+
+                    // 获取设定温度
+                    if (data.equipmentMode == 1) {
+                        this.degrees = this.equipmentCoolTemperature;
+                    }
+
+                    if (data.equipmentMode == 2) {
+                        this.degrees = this.equipmentHeatTemperature;
+                    }
+
+                    if (data.equipmentMode == 3) {
+                        this.degrees = this.equipmentHeatTemperature;
+                        this.equipmentFanMode = data.equipmentFanMode;
+                        this.value = String(data.equipmentFanMode);
+                    }
+                    let arrD = [];
+                    arrD.push(this.degrees);
+                    this.valueDegrees = arrD;
+                    this.eqModeVal = String(data.equipmentMode)
+                }
+                console.log(msg.data)
             },
             socketclose: function () {
-              console.log("socket已经关闭")
-              this.socket.close()
+                console.log("socket已经关闭")
+                this.socket.close()
             }
         }
     }
