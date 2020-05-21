@@ -96,7 +96,7 @@
                 console.log("连接错误")
             },
             getMessage: function (msg) {
-                let data = msg.data;
+                let data = JSON.parse(msg.data);
 
                 //设备上设定的制冷的温度
                 if (data.sendInWaterTemerature) {

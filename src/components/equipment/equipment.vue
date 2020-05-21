@@ -500,7 +500,7 @@
                 this.Api.useSceneList(str, (msg) => {
                     if (msg.code == 200) {
                         this.scenList = msg.body.results;
-                        console.log(this.scenList)
+                        // console.log(this.scenList)
                     }
                 });
             },

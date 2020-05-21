@@ -962,7 +962,7 @@
 
                 console.log(msg)
 
-                let data = msg.data;
+                let data = JSON.parse(msg.data);
 
                 //设备上设定的制冷的温度
                 if (data.equipmentCoolTemperature) {
@@ -1040,8 +1040,7 @@
                     this.valueDegrees = arrD;
                     this.eqModeVal = String(data.equipmentMode)
                 }
-                console.log(msg.data)
-            },
+            }, 
             socketclose: function () {
                 console.log("socket已经关闭")
                 this.socket.close()
