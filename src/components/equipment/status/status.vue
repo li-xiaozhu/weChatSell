@@ -4,25 +4,25 @@
     <div class="list list_normal list_no_arrow list_info">
       <div class="item">
         <div class="clear">
-          <p>送水回水温度 <span
+          <p>用户侧回水温度 <span
               class="right">{{this.info.sendInWaterTemerature?this.info.sendInWaterTemerature+'℃':'无'}}</span></p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>送水出水温度 <span
+          <p>用户侧出水温度 <span
               class="right">{{this.info.sendOutWaterTemerature?this.info.sendOutWaterTemerature+'℃':'无'}}</span></p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>冷凝回水温度 <span
+          <p>地源侧回水温度 <span
               class="right">{{this.info.coolInWaterTemerature?this.info.coolInWaterTemerature+'℃':'无'}}</span></p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>冷凝出水温度 <span
+          <p>地源侧出水温度 <span
               class="right">{{this.info.coolOutWaterTemerature?this.info.coolOutWaterTemerature+'℃':'无'}}</span></p>
         </div>
       </div>
