@@ -29,7 +29,7 @@ function post(url, data, success, error) {
                 if (error) {
                     error(res);
                 } else {
-                    Toast("网络连接超时，请刷新重试");
+                    // Toast("网络连接超时，请刷新重试");
                 }
             }
         }
@@ -56,7 +56,7 @@ function get(url, success, error) {
                 if (error) {
                     error(res);
                 } else {
-                    Toast("网络连接超时，请刷新重试");
+                    // Toast("网络连接超时，请刷新重试");
                 }
             }
         }

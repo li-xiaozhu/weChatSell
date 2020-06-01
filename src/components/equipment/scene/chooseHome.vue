@@ -1,48 +1,48 @@
 <template>
-    <div class="add headFixed bodyPd hasBotBtns">
-        <div class="fixed_head">
-            <div class="content">
-                <div class="go_back">
-                    <span @click="$router.back(-1)" class="goBackBtn"></span>
-                    场景设置
-                    <span class="right addHome" @click="addHome()">添加</span>
-                </div>
-
-            </div>
-        </div>
-        <!-- 住宅列表 -->
-        <div class="roomWrapper">
-            <div class="list list_prev list_normal">
-                <p class="titleTip">请选择设备所在小区或大厦</p>
-                <div class="item choose-item" :class="index==currentIndex?'choose-active':''"
-                     v-for="(data,index) in list"
-                     @click="chooseRoom(index)"
-                     :key="index">
-                    <p>
-                        {{data.name}}
-                        <span class="icon-check"></span>
-                    </p>
-                </div>
-            </div>
+  <div class="add headFixed bodyPd hasBotBtns">
+    <div class="fixed_head">
+      <div class="content">
+        <div class="go_back">
+          <span @click="$router.back(-1)" class="goBackBtn"></span>
+          场景设置
+          <span class="right addHome" @click="addHome()">添加</span>
         </div>
 
-
-        <div class="botBtns">
-            <div>
-                <mt-button :disabled="disabled" size="large" class="btn-primary" @click="eqChooseRoom">确定</mt-button>
-            </div>
-        </div>
-        <mt-popup v-model="popupVisible">
-            <div class="smart-modal">
-                <h1>添加住宅</h1>
-                <input type="text" name="" id="" v-model="homeName">
-                <div class="smart-modal-foot">
-                    <span @click="handleClick">取消</span>
-                    <span @click="handleAdd">确定</span>
-                </div>
-            </div>
-        </mt-popup>
+      </div>
     </div>
+    <!-- 住宅列表 -->
+    <div class="roomWrapper">
+      <div class="list list_prev list_normal">
+        <p class="titleTip">请选择设备所在小区或大厦</p>
+        <div class="item choose-item" :class="index==currentIndex?'choose-active':''"
+             v-for="(data,index) in list"
+             @click="chooseRoom(index)"
+             :key="index">
+          <p>
+            {{data.name}}
+            <span class="icon-check"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="botBtns">
+      <div>
+        <mt-button :disabled="disabled" size="large" class="btn-primary" @click="eqChooseRoom">确定</mt-button>
+      </div>
+    </div>
+    <mt-popup v-model="popupVisible">
+      <div class="smart-modal">
+        <h1>添加住宅</h1>
+        <input type="text" name="" id="" v-model="homeName">
+        <div class="smart-modal-foot">
+          <span @click="handleClick">取消</span>
+          <span @click="handleAdd">确定</span>
+        </div>
+      </div>
+    </mt-popup>
+  </div>
 </template>
 <script>
     import {Popup} from 'mint-ui';
@@ -170,9 +170,9 @@
                 if (this.eqId) {
                     arr.push('id=' + this.eqId)
                 }
-                if (this.sceneId) {
-                    arr.push('sceneId=' + this.sceneId)
-                }
+                // if (this.sceneId) {
+                //     arr.push('sceneId=' + this.sceneId)
+                // }
                 let str = '';
                 if (arr.length > 0) {
                     str = arr.join('&');
@@ -187,7 +187,7 @@
 
                 this.Store.setEqInfo(params);
                 this.$router.push({
-                    path: this.PATH.getChooseRoom() + this.getType() + '/'+this.sceneId
+                    path: this.PATH.getChooseRoom() + this.getType() + '/' + this.sceneId + str
                 });
             }
         }
@@ -195,18 +195,18 @@
 </script>
 
 <style scoped>
-    @import url('../equipment.css');
+  @import url('../equipment.css');
 
-    .list_normal {
-        margin-top: 54px;
-    }
+  .list_normal {
+    margin-top: 54px;
+  }
 
-    .list_prev .item {
-        background-image: none;
-    }
+  .list_prev .item {
+    background-image: none;
+  }
 
-    .list_prev .item:last-child {
-        border-bottom: none;
-    }
+  .list_prev .item:last-child {
+    border-bottom: none;
+  }
 </style>
 
