@@ -26,6 +26,12 @@
               class="right">{{this.info.coolOutWaterTemerature?this.info.coolOutWaterTemerature+'℃':'无'}}</span></p>
         </div>
       </div>
+      <div class="item">
+        <div class="clear">
+          <p>环境温度 <span
+              class="right">{{this.info.equipmentRoomTemerature?this.info.equipmentRoomTemerature+'℃':'无'}}</span></p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
