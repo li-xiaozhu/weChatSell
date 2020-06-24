@@ -1,0 +1,137 @@
+.freshAirDetail {
+    min-height: 100vh;
+    padding-bottom: 40px;
+}
+
+.freshAirDetail .coolBg {
+    display: none;
+}
+
+.humidity {
+    color: #ffffff;
+    font-size: 16px;
+    text-align: center;
+    margin-top: 15px;
+}
+
+.humidity span {
+    padding: 0 20px;
+    position: relative;
+}
+
+.humidity span:before {
+    content: '';
+    display: inline-block;
+    width: 1px;
+    height: 20px;
+    opacity: 0.4;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.humidity span:first-child:before {
+    display: none;
+}
+
+
+.eq-panel {
+    background-color: #ffffff;
+    overflow: hidden;
+}
+
+.fresh_setDegree {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.fresh_setDegree > span {
+    display: inline-block;
+    width: 130px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: rgba(60, 124, 255, 1);
+    text-align: center;
+    line-height: 34px;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.freshAirDetail .eqType {
+    border-top: none;
+    border-bottom: none;
+}
+
+.eq-shandow {
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 6px 0px rgba(209, 209, 209, 0.5);
+}
+
+.eqAir .aTitle {
+    color: rgba(50, 50, 50, 1);
+    font-size: 14px;
+    text-align: left;
+    margin-bottom: 10px;
+    padding-left: 10px;
+}
+
+.eqAir {
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 6px 0px rgba(209, 209, 209, 0.5);
+    margin: 0 15px;
+    line-height: 1.5;
+    padding: 8px 0;
+    margin-top: 10px;
+}
+
+.eqAir ul {
+    font-size: 0;
+    overflow: hidden;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.eqAir ul li {
+    /*width: 25%;*/
+    /*float: left;*/
+    padding: 0 10px;
+}
+
+.eqAir ul li > div {
+    display: inline-block;
+    text-align: left;
+}
+
+.eqAir .aName {
+    color: rgba(180, 180, 180, 1);
+    font-size: 11px;
+}
+
+.eqAir .aText {
+    font-size: 13px;
+}
+
+.eqAir .aBot {
+    font-size: 10px;
+    padding: 0 10px;
+}
+
+.userParams {
+    height: 44px;
+    border-radius: 8px;
+    margin: 0 15px;
+    line-height: 44px;
+    padding: 0 10px;
+    margin-top: 10px;
+    overflow: hidden;
+}
+
+.userParams .icon-arrow {
+    float: right;
+    margin-top: 12px;
+}

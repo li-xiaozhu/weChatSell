@@ -685,3 +685,70 @@ html {
 .hasBotBtns {
     padding-bottom: 45px;
 }
+
+.text-danger {
+    color: #FF5F66;
+}
+
+.text-success {
+    color: rgba(8, 202, 78, 1);
+}
+
+.text-blue {
+    color: rgba(60, 124, 255, 1);
+}
+
+.icon-arrow {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/icon_3.png");
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+}
+
+.freshTitle {
+    color: rgba(50, 50, 50, 1);
+    font-size: 16px;
+    padding: 5px 15px;
+}
+
+.freshTitle:before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    background-color: rgba(100, 100, 100, 1);
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: top;
+    margin-top: 9px;
+}
+
+.freshHome {
+    position: fixed;
+    top: 0;
+    right: 10px;
+    line-height: 44px;
+    color: rgba(60, 124, 255, 1);
+    font-size: 15px;
+    z-index: 10000;
+}
+
+.freshStatus .list_info .item .black {
+    color: rgba(30, 50, 80, 1);
+    font-size: 14px;
+    padding-right: 5px;
+}
+.freshStatus .page{
+    margin: 0 15px;
+    margin-top: 60px;
+}
+.pagePrev, .pageNext {
+    height: 44px;
+    line-height: 44px;
+    font-size: 18px;
+    text-align: center;
+    margin-bottom: 10px;
+}
