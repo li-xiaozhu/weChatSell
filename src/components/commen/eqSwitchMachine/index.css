@@ -1,4 +1,4 @@
-.eqSwitchMachine span {
+.eqSwitchMachine>span {
     display: block;
     background: #FFFFFF;
     box-shadow: 0 0 5px 0 rgba(205, 221, 253, 0.5);

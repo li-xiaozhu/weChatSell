@@ -54,19 +54,21 @@
               <span>35%</span>
             </div>
           </div>
+          <div class="fresh_img"></div>
           <div class="fresh_setDegree clear">
-            <span><span class="icon-f1"></span>温度设定</span>
-            <span><span class="icon-f2"></span>湿度设定</span>
+            <span @click="showDegreeModel"><span class="icon-f1"></span>温度设定</span>
+            <span @click="showFreshDegreeModel"><span class="icon-f2"></span>湿度设定</span>
           </div>
         </div>
 
         <div class="eqType">
           <ul class="clear">
+            <!--开关机-->
             <vEqSwitchMachine :eqInfo="eqInfo" :id="this.getId()"></vEqSwitchMachine>
 
             <!--          切换模式-->
-            <li class="li-mode" @click="changeEqMode" v-if="eqInfo.equipmentType==2"><span></span>模式</li>
-            <li class="li-mode" @click="changeEqMain" v-else><span></span>模式</li>
+            <!--模式切换-->
+            <vEqModal :eqInfo="eqInfo" :id="this.getId()"></vEqModal>
 
             <!--          告警-->
             <li class="li-alert" :class="eqInfo.isAlarm==1?'alert-dannger':''" v-if="type==1">
@@ -79,7 +81,7 @@
             </li>
 
             <!--            风速-->
-            <li class="li4" v-if="type==2" @click="showWindSpeed"><span></span>风速</li>
+            <li class="li4" v-if="eqInfo.equipmentType==2" @click="showWindSpeed"><span></span>风速</li>
           </ul>
         </div>
 
@@ -116,10 +118,13 @@
         </div>
 
         <!--用户参数-->
-        <div class="userParams eq-shandow">
-          用户参数模式
-          <span class="icon-arrow"></span>
-        </div>
+        <router-link :to="'/fresh/params/'+this.getId()">
+          <div class="userParams eq-shandow">
+            用户参数模式
+            <span class="icon-arrow"></span>
+          </div>
+        </router-link>
+
 
       </div>
 
@@ -138,26 +143,6 @@
         </div>
       </div>
     </div>
-
-
-    <mt-popup
-        v-model="showModel"
-        modal="false"
-        class="pubPopup"
-        popup-transition="popup-fade"
-        position="bottom">
-      <p class="tipText">模式切换</p>
-      <mt-radio
-          title=""
-          v-model="eqModeVal"
-          :options="type==2?this.modelListFan:this.modelList"
-      >
-      </mt-radio>
-      <div class="btns">
-        <mt-button size="large" class="btn-orange" @click="changeMode">确定</mt-button>
-        <mt-button size="large" @click="cancelModel">取消</mt-button>
-      </div>
-    </mt-popup>
 
     <mt-popup
         v-model="popupVisible"
@@ -191,6 +176,23 @@
       ></mt-picker>
       <div class="btns">
         <mt-button size="large" class="btn-orange" @click="changeDegree">确定</mt-button>
+        <mt-button size="large" @click="cancelDegreeModel">取消</mt-button>
+      </div>
+    </mt-popup>
+
+    <!--    湿度-->
+    <mt-popup
+        v-model="showFreshDegrees"
+        class="pubPopup"
+        defaultIndex="[3]"
+        position="bottom">
+      <p class="tipText tip-text-border">湿度选择</p>
+      <mt-picker :slots="freshDegrees"
+                 @change="onValuesChange"
+                 ref="mainFreshDegrees"
+      ></mt-picker>
+      <div class="btns">
+        <mt-button size="large" class="btn-orange" @click="changeFreshDegree">确定</mt-button>
         <mt-button size="large" @click="cancelDegreeModel">取消</mt-button>
       </div>
     </mt-popup>
@@ -349,6 +351,16 @@
                         textAlign: 'center'
                     }
                 ],
+                freshDegrees: [
+                    {
+                        flex: 1,
+                        values: [],
+                        className: 'slot1',
+                        textAlign: 'center',
+                        value: 15,
+                        defaultIndex: 5
+                    }
+                ],
                 roomTep: null,
                 firstRequest: true,
                 isRequest: true,
@@ -357,7 +369,8 @@
 
                 path: "ws://www.zhilianyueju.com/websocketDemo/",
                 socket: "",
-                drawDegree: null
+                drawDegree: null,
+                showFreshDegrees: false
             }
         },
         beforeMount() {
@@ -392,6 +405,13 @@
                 fanDegree.push(String(i));
             }
             this.slotsFan[0].values = fanDegree;
+
+            // 湿度7-25
+            let freshDegrees = [];
+            for (let i = 7; i <= 40; i++) {
+                freshDegrees.push(i);
+            }
+            this.freshDegrees[0].values = freshDegrees;
         },
         mounted() {
             this.isRequest = true;
@@ -549,54 +569,6 @@
                     }
                 })
             },
-
-            // 切换制热模式
-            adjustHeatMode() {
-                let str = 'id=' + this.getId();
-                this.Api.adjustHeatMode(str, this.type, (msg) => {
-                    if (msg.code == 200) {
-                        Toast('设置制热模式成功');
-                        this.hideModal();
-                        this.init();
-                    } else {
-                        Toast(msg.message);
-                        this.hideModal();
-                        this.eqModeVal = String(this.eqMode);
-                    }
-                })
-            },
-            // 切换制冷模式
-            adjustCoolMode() {
-                let str = 'id=' + this.getId();
-                this.Api.adjustCoolMode(str, this.type, (msg) => {
-                    if (msg.code == 200) {
-                        Toast('设置制冷模式成功');
-                        this.hideModal();
-                        this.init();
-                    } else {
-                        Toast(msg.message);
-                        this.hideModal();
-                        this.eqModeVal = String(this.eqInfo.equipmentMode);
-                    }
-                })
-            },
-            // 切换通风模式
-            adjustVentilationMode() {
-                let arr = [];
-                arr.push('id=' + this.getId());
-                let str = arr.join('&');
-                this.Api.adjustVentilationMode(str, (msg) => {
-                    if (msg.code == 200) {
-                        Toast('切换通风模式成功');
-                        this.hideModal();
-                        this.init();
-                    } else {
-                        Toast(msg.message);
-                        this.hideModal();
-                        this.eqModeVal = String(this.eqInfo.equipmentMode);
-                    }
-                })
-            },
             // 调节制热温度
             adjustHeatTemperature(temperature) {
                 let arr = [];
@@ -746,18 +718,7 @@
                 //   this.eqFlag = flag;
                 // }
             },
-            changeMode() {
-                let flag = this.eqModeVal;
-                if (flag == 1) {
-                    this.adjustCoolMode();
-                }
-                if (flag == 2) {
-                    this.adjustHeatMode();
-                }
-                if (flag == 3) {
-                    this.adjustVentilationMode();
-                }
-            },
+
             cancelModel() {
                 this.showModel = false;
                 this.startInit();
@@ -787,19 +748,7 @@
                     }
                 })
             },
-            changeEqMain() {
-                var status = this.eqInfo.equipmentStatus;
-                if (status == 0) {
-                    this.stopInit();
-                    this.showModel = true;
-                } else {
-                    this.closeEq();
-                }
-            },
-            changeEqMode() {
-                this.stopInit();
-                this.showModel = true;
-            },
+
             onValuesChange(picker, values) {
                 this.valueDegrees = values;
             },
@@ -820,6 +769,7 @@
             cancelDegreeModel() {
                 this.startInit();
                 this.showDegrees = false;
+                this.showFreshDegrees = false;
             },
             goBack() {
                 this.$router.push({path: '/equipment'})
@@ -927,6 +877,28 @@
             socketclose: function () {
                 console.log("socket已经关闭")
                 this.socket.close()
+            },
+
+            /*湿度修改*/
+            showFreshDegreeModel() {
+                this.showFreshDegrees = true;
+            },
+            changeFreshDegree() {
+                let temperature = this.valueDegrees[0];
+
+                let arr = [];
+                arr.push('id=' + this.getId());
+                arr.push('equipmentCoolTemperature=' + temperature);
+                let str = arr.join('&');
+                this.Api.adjustCoolTemperature(str, this.type, (msg) => {
+                    this.cancelDegreeModel();
+                    if (msg.code == 200) {
+                        this.init();
+                        // Toast('设置制冷温度成功')
+                    } else {
+                        Toast(msg.message)
+                    }
+                })
             }
         }
     }

@@ -24,7 +24,8 @@ let Path = {
     ServiceDetail: '/service/detail/:id',
     AboutUs: '/about',
     FreshAirDetail: '/fresh/detail/:id',
-    FreshAirStatus: '/fresh/status/:id'
+    FreshAirStatus: '/fresh/status/:id',
+    FreshAirParams: '/fresh/params/:id'
 };
 
 let PATH = {

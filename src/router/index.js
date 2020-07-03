@@ -27,6 +27,7 @@ import ResetPhone from '../components/personal/resetPhone.vue'
 import AboutUs from '../components/about/about'
 import FreshAirDetail from '../components/freshAir/detail/index'
 import FreshAirStatus from '../components/freshAir/status/index'
+import FreshAirParams from '../components/freshAir/params/index'
 
 Vue.use(Router);
 
@@ -241,6 +242,14 @@ export default new Router({
             meta: {
                 isLogin: true,
                 title: '系统状态'
+            }
+        }, {
+            path: Path.FreshAirParams,
+            name: 'FreshAirParams',
+            component: FreshAirParams,
+            meta: {
+                isLogin: true,
+                title: '用户参数'
             }
         },
         {

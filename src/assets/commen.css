@@ -741,14 +741,224 @@ html {
     font-size: 14px;
     padding-right: 5px;
 }
-.freshStatus .page{
+
+.freshStatus .page {
     margin: 0 15px;
     margin-top: 60px;
 }
+
 .pagePrev, .pageNext {
     height: 44px;
     line-height: 44px;
     font-size: 18px;
     text-align: center;
     margin-bottom: 10px;
+}
+
+.eqComType {
+    margin-top: 20px;
+}
+
+.eqComType li {
+    width: 25%;
+    float: left;
+    color: rgba(50, 50, 50, 1);
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.eqComType li .img {
+    display: block;
+    margin: auto;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 1);
+    box-shadow: 0px 0px 5px 0px rgba(205, 221, 253, 0.5);
+    max-width: 100%;
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-bottom: 10px;
+}
+
+.icon-type-1 {
+    background-image: url("../assets/images/fresh/001.png");
+}
+
+
+.icon-type-2 {
+    background-image: url("../assets/images/fresh/002.png");
+}
+
+
+.icon-type-3 {
+    background-image: url("../assets/images/fresh/003.png");
+}
+
+
+.icon-type-4 {
+    background-image: url("../assets/images/fresh/004.png");
+}
+
+.icon-type-5 {
+    background-image: url("../assets/images/fresh/005.png");
+}
+
+.icon-type-6 {
+    background-image: url("../assets/images/fresh/006.png");
+}
+
+.icon-type-7 {
+    background-image: url("../assets/images/fresh/007.png");
+}
+
+.icon-type-8 {
+    background-image: url("../assets/images/fresh/008.png");
+}
+
+
+.eqType {
+    background: #fff;
+    margin-top: 10px;
+    border-top: 1px solid #DCDCDC;
+    border-bottom: 1px solid #DCDCDC;
+}
+
+.eqType li {
+    width: 25%;
+    float: left;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    font-size: 14px;
+    color: #323232;
+    letter-spacing: 0.75px;
+    text-align: center;
+}
+
+.eqType li span {
+    display: block;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 5px 0 rgba(205, 221, 253, 0.5);
+    border-radius: 22px;
+    width: 55px;
+    height: 55px;
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.eqType .li1 span {
+    background-image: url('../assets/images/cold.png');
+}
+
+.eqType .li2 span {
+    background-image: url('../assets/images/hot.png');
+}
+
+.eqType .li3 span {
+    background-image: url('../assets/images/clock.png');
+}
+
+.eqType .li4 span {
+    background-image: url('../assets/images/wind.png');
+}
+
+.eqType .li-mode span {
+    background-image: url('../assets/images/fresh/007.png');
+}
+
+.eqType .li-alert span {
+    background-image: url('../assets/images/alert.png');
+}
+
+.eqType .alert-dannger span {
+    background-image: url('../assets/images/alert_danger.png');
+}
+
+.eqType .li-open span {
+    background-image: url('../assets/images/open.png');
+}
+
+.eqType .li-open2 span {
+    background-image: url('../assets/images/open2.png');
+}
+
+.eqType .active span {
+    background: #3C7CFF;
+    background-size: 60%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.eqType .li1.active span {
+    background-image: url('../assets/images/cold2.png');
+}
+
+.eqType .li2.active span {
+    background-image: url('../assets/images/hot2.png');
+}
+
+.eqType .li4.active span {
+    background-image: url('../assets/images/wind2.png');
+}
+
+.fresh_setDegree {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.fresh_setDegree > div {
+    display: inline-block;
+}
+
+.fresh_setDegree > span, .fresh_setDegree .item {
+    display: inline-block;
+    width: 130px;
+    height: 34px;
+    border-radius: 17px;
+    background-color: rgba(60, 124, 255, 1);
+    text-align: center;
+    line-height: 34px;
+    color: #ffffff;
+    font-size: 18px;
+    margin: 0 10px;
+}
+
+.icon-f1 {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/fresh/009.png");
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-top: -3px;
+}
+
+.icon-f2 {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url("../assets/images/fresh/010.png");
+    vertical-align: middle;
+    margin-right: 5px;
+    margin-top: -3px;
+}
+
+.bgWhite {
+    background: #ffffff;
+}
+
+.tipText {
+    padding: 15px 15px;
+    font-size: 18px;
 }

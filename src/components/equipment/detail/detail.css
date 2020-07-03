@@ -247,92 +247,6 @@
     letter-spacing: 0;
 }
 
-.eqType {
-    background: #fff;
-    margin-top: 10px;
-    border-top: 1px solid #DCDCDC;
-    border-bottom: 1px solid #DCDCDC;
-}
-
-.eqType li {
-    width: 25%;
-    float: left;
-    padding-top: 20px;
-    padding-bottom: 15px;
-    font-size: 14px;
-    color: #323232;
-    letter-spacing: 0.75px;
-    text-align: center;
-}
-
-.eqType li span {
-    display: block;
-    background: #FFFFFF;
-    box-shadow: 0 0 5px 0 rgba(205, 221, 253, 0.5);
-    border-radius: 22px;
-    width: 55px;
-    height: 55px;
-    background-size: 60%;
-    background-position: center;
-    background-repeat: no-repeat;
-    margin: auto;
-    margin-bottom: 10px;
-}
-
-.eqType .li1 span {
-    background-image: url('../../../assets/images/cold.png');
-}
-
-.eqType .li2 span {
-    background-image: url('../../../assets/images/hot.png');
-}
-
-.eqType .li3 span {
-    background-image: url('../../../assets/images/clock.png');
-}
-
-.eqType .li4 span {
-    background-image: url('../../../assets/images/wind.png');
-}
-
-.eqType .li-mode span {
-    background-image: url('../../../assets/images/mode.png');
-}
-
-.eqType .li-alert span {
-    background-image: url('../../../assets/images/alert.png');
-}
-
-.eqType .alert-dannger span {
-    background-image: url('../../../assets/images/alert_danger.png');
-}
-
-.eqType .li-open span {
-    background-image: url('../../../assets/images/open.png');
-}
-
-.eqType .li-open2 span {
-    background-image: url('../../../assets/images/open2.png');
-}
-
-.eqType .active span {
-    background: #3C7CFF;
-    background-size: 60%;
-    background-position: center;
-    background-repeat: no-repeat;
-}
-
-.eqType .li1.active span {
-    background-image: url('../../../assets/images/cold2.png');
-}
-
-.eqType .li2.active span {
-    background-image: url('../../../assets/images/hot2.png');
-}
-
-.eqType .li4.active span {
-    background-image: url('../../../assets/images/wind2.png');
-}
 
 .dList {
     margin-top: 10px;
@@ -423,11 +337,6 @@
 
 .detailPupup .inlineItem {
     margin-bottom: 20px;
-}
-
-.tipText {
-    padding: 15px 15px;
-    font-size: 18px;
 }
 
 .progress {

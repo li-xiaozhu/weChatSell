@@ -46,8 +46,7 @@
                     type = '开机';
                     this.closeIcon = 'icon-loading-on';
                 }
-                let str = 'id=' + this.getId();
-                let time = 10;
+                let time = 120;
                 this.closeText = type + '中 ' + time + '秒';
                 this.closeTimer = setInterval(() => {
                     time--;
@@ -57,14 +56,14 @@
                         clearInterval(this.closeTimer);
                         time = 10;
                         Toast(type + '成功');
-                        this.init();
+                        this.$emit("init");
                     }
                 }, 1000);
             },
             eqStart() {
                 let str = 'id=' + this.getId();
                 let type = this.type;
-                this.Api.startUp(str, type, (msg) => {
+                this.Api.freshStartUp(str, (msg) => {
                     if (msg.code == 200) {
                         this.closeInterval(1);
                     } else {
@@ -74,7 +73,7 @@
             },
             shutDown() {
                 let str = 'id=' + this.getId();
-                this.Api.shutDown(str, this.type, (msg) => {
+                this.Api.freshShutDown(str, (msg) => {
                     if (msg.code == 200) {
                         this.closeInterval();
                     } else {

@@ -120,6 +120,14 @@ const URL = {
 //  产品应用
     articleList: '/api/article/list',
     articleDetail: '/api/article/detail',
+
+    /*新风设备*/
+    freshStartUp: '/api/xinFengEquipment/startUp',
+    freshShutDown: '/api/xinFengEquipment/shutDown',
+    freshAdjustHeatMode: '/api/xinFengEquipment/adjustHeatMode',
+    freshAdjustCoolMode: '/api/xinFengEquipment/adjustCoolMode',
+    freshAdjustHeatTemperature: '/api/xinFengEquipment/adjustHeatTemperature',
+    freshAdjustCoolTemperature: '/api/xinFengEquipment/adjustCoolTemperature',
 };
 
 const Api = {
@@ -306,14 +314,40 @@ const Api = {
         post(URL.editEqName, params, success, err)
     },
 
-    articleList(str,success, err) {
-        get(URL.articleList+ '?' + str, success, err)
+    articleList(str, success, err) {
+        get(URL.articleList + '?' + str, success, err)
     },
 
     articleDetail(id, success, err) {
         get(URL.articleDetail + '?id=' + id, success, err)
     },
 
+    /*新风*/
+    freshStartUp(str, success, err) {
+        let url = URL.freshStartUp;
+        get(url + '?' + str, success, err)
+    },
+
+    freshShutDown(str, success, err) {
+        let url = URL.freshShutDown;
+        get(url + '?' + str, success, err)
+    },
+    freshAdjustHeatMode(str, success, err) {
+        let url = URL.freshAdjustHeatMode;
+        get(url + '?' + str, success, err)
+    },
+    freshAdjustCoolMode(str, success, err) {
+        let url = URL.freshAdjustCoolMode;
+        get(url + '?' + str, success, err)
+    },
+    freshAdjustHeatTemperature(str, type, success, err) {
+        let url = URL.freshAdjustHeatTemperature;
+        get(url + '?' + str, success, err)
+    },
+    freshAdjustCoolTemperature(str, type, success, err) {
+        let url = URL.freshAdjustCoolTemperature;
+        get(url + '?' + str, success, err)
+    },
 
 };
 export default Api;
