@@ -31,10 +31,10 @@
         注册账号即表示您同意并愿意遵守智能家居<span class="text-orange">用户协议</span>和<span class="text-orange">隐私政策</span>
       </div>
     </div>
-    <div class="fixed-foot">
-      <p> 如有疑问，请拨打</p>
-      <a href="tel:+400-019-2209" class="text-orange">400-019-2209</a>
-    </div>
+<!--    <div class="fixed-foot">-->
+<!--      <p> 如有疑问，请拨打</p>-->
+<!--      <a href="tel:+400-019-2209" class="text-orange">400-019-2209</a>-->
+<!--    </div>-->
     <v-tip></v-tip>
   </div>
 </template>

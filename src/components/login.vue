@@ -20,10 +20,10 @@
                 <mt-button size="large" class="btn-liner-orange" plain>注册</mt-button>
             </router-link>
         </div>
-        <div class="fixed-foot">
-            <p> 如有疑问，请拨打</p>
-            <a href="tel:+400-019-2209" class="text-orange">400-019-2209</a>
-        </div>
+<!--        <div class="fixed-foot">-->
+<!--            <p> 如有疑问，请拨打</p>-->
+<!--            <a href="tel:+400-019-2209" class="text-orange">400-019-2209</a>-->
+<!--        </div>-->
         <div class="tip" v-show="showTip">
             <div class="content">
                 <div class="tip_body">
