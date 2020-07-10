@@ -128,6 +128,9 @@ const URL = {
     freshAdjustCoolMode: '/api/xinFengEquipment/adjustCoolMode',
     freshAdjustHeatTemperature: '/api/xinFengEquipment/adjustHeatTemperature',
     freshAdjustCoolTemperature: '/api/xinFengEquipment/adjustCoolTemperature',
+    freshAdjustCoolHumidity: '/api/xinFengEquipment/adjustCoolHumidity',
+    freshAdjustHeatHumidity: '/api/xinFengEquipment/adjustHeatHumidity',
+    freshEquipmentDetail: '/api/xinFengEquipment/detail',
 };
 
 const Api = {
@@ -346,6 +349,19 @@ const Api = {
     },
     freshAdjustCoolTemperature(str, type, success, err) {
         let url = URL.freshAdjustCoolTemperature;
+        get(url + '?' + str, success, err)
+    },
+
+    freshAdjustHeatHumidity(str, success, err) {
+        let url = URL.freshAdjustHeatHumidity;
+        get(url + '?' + str, success, err)
+    },
+    freshAdjustCoolHumidity(str, success, err) {
+        let url = URL.freshAdjustCoolHumidity;
+        get(url + '?' + str, success, err)
+    },
+    freshEquipmentDetail(str, success, err) {
+        let url = URL.freshEquipmentDetail;
         get(url + '?' + str, success, err)
     },
 

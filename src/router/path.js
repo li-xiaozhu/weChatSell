@@ -46,6 +46,12 @@ let PATH = {
     },
     getRoomMange() {
         return '/equipment/room/'
+    },
+    goDetail() {
+        return '/equipment/detail/'
+    },
+    goFreshDetail() {
+        return '/fresh/detail/'
     }
 };
 

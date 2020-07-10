@@ -16,11 +16,7 @@
     props: ['title'],
     methods: {
       goBack() {
-        if(this.$parent.goBack){
-          this.$parent.goBack();
-        }else{
           this.$router.back(-1)
-        }
       }
     }
   }

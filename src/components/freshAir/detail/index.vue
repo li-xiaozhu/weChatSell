@@ -51,37 +51,32 @@
             </div>
             <div class="humidity">
               <span>湿度</span>
-              <span>35%</span>
+              <span>{{eqInfo.equipmentRoomHumidity==null?'—':eqInfo.equipmentRoomHumidity+'%'}}</span>
             </div>
           </div>
           <div class="fresh_img"></div>
           <div class="fresh_setDegree clear">
-            <span @click="showDegreeModel"><span class="icon-f1"></span>温度设定</span>
-            <span @click="showFreshDegreeModel"><span class="icon-f2"></span>湿度设定</span>
+            <!--温度设定-->
+            <vEqSetDegree :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqSetDegree>
+
+            <!--湿度设定-->
+            <vEqSetHumidity :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqSetHumidity>
           </div>
         </div>
 
-        <div class="eqType">
+        <div class="eqComType">
           <ul class="clear">
             <!--开关机-->
-            <vEqSwitchMachine :eqInfo="eqInfo" :id="this.getId()"></vEqSwitchMachine>
+            <vEqSwitchMachine :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqSwitchMachine>
 
-            <!--          切换模式-->
             <!--模式切换-->
-            <vEqModal :eqInfo="eqInfo" :id="this.getId()"></vEqModal>
+            <vEqModal :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqModal>
 
-            <!--          告警-->
-            <li class="li-alert" :class="eqInfo.isAlarm==1?'alert-dannger':''" v-if="type==1">
-              <router-link :to="'/fault/'+this.getId()"><span></span>报警</router-link>
-            </li>
+            <!--报警-->
+            <vEqAlarm :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqAlarm>
 
-            <!--            定时-->
-            <li class="li3">
-              <router-link :to="'/equipment/timer/'+this.getId()"><span></span>定时</router-link>
-            </li>
-
-            <!--            风速-->
-            <li class="li4" v-if="eqInfo.equipmentType==2" @click="showWindSpeed"><span></span>风速</li>
+            <!--定时-->
+            <vEqTimer :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqTimer>
           </ul>
         </div>
 
@@ -92,29 +87,29 @@
             <li>
               <div>
                 <p class="aName">CO2</p>
-                <p class="aText text-danger">10ppm</p>
+                <p class="aText text-danger">{{eqParams&&eqParams.co2?eqParams.co2:0}}ppm</p>
               </div>
             </li>
             <li>
               <div>
                 <p class="aName">TVOC</p>
-                <p class="aText text-success">100mg</p>
+                <p class="aText text-success">{{eqParams&&eqParams.tvoc?eqParams.tvoc:0}}mg</p>
               </div>
             </li>
             <li>
               <div>
                 <p class="aName">PM2.5</p>
-                <p class="aText text-blue">1ug</p>
+                <p class="aText text-blue">{{eqParams&&eqParams.pm25?eqParams.pm25:0}}ug</p>
               </div>
             </li>
             <li>
               <div>
                 <p class="aName">甲醛</p>
-                <p class="aText text-orange">0mg</p>
+                <p class="aText text-orange">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}mg</p>
               </div>
             </li>
           </ul>
-          <p class="aBot">系统状态：运行</p>
+          <p class="aBot">系统状态：{{eqInfo.equipmentStatus==0?'关闭':'运行'}}</p>
         </div>
 
         <!--用户参数-->
@@ -124,78 +119,9 @@
             <span class="icon-arrow"></span>
           </div>
         </router-link>
-
-
       </div>
 
-      <div class="tip detail_tip" v-show="showTip">
-        <div class="content">
-          <div class="tip_body">
-            <div class="modal-warning">
-              <span></span>
-              <p>温馨提示：请关机后再切换模式</p>
-            </div>
-
-          </div>
-          <div class="tip_foot tip_foot_detail">
-            <span @click="hideModal">取消</span>
-          </div>
-        </div>
-      </div>
     </div>
-
-    <mt-popup
-        v-model="popupVisible"
-        modal="false"
-        class="pubPopup"
-        popup-transition="popup-fade"
-        position="bottom">
-      <p class="tipText">修改风速</p>
-      <mt-radio
-          title=""
-          v-model="value"
-          :options="this.checklist"
-      >
-      </mt-radio>
-      <div class="btns">
-        <mt-button size="large" class="btn-orange" @click="adjustWindSpeed">确定</mt-button>
-        <mt-button size="large" @click="cancelTimer">取消</mt-button>
-      </div>
-    </mt-popup>
-
-    <!--    温度切换-->
-    <mt-popup
-        v-model="showDegrees"
-        class="pubPopup"
-        defaultIndex="[3]"
-        position="bottom">
-      <p class="tipText tip-text-border">温度选择</p>
-      <mt-picker :slots="type==2?slotsFan:(eqInfo.equipmentMode==1?coolMain:hotMain)"
-                 @change="onValuesChange"
-                 ref="mainDegrees"
-      ></mt-picker>
-      <div class="btns">
-        <mt-button size="large" class="btn-orange" @click="changeDegree">确定</mt-button>
-        <mt-button size="large" @click="cancelDegreeModel">取消</mt-button>
-      </div>
-    </mt-popup>
-
-    <!--    湿度-->
-    <mt-popup
-        v-model="showFreshDegrees"
-        class="pubPopup"
-        defaultIndex="[3]"
-        position="bottom">
-      <p class="tipText tip-text-border">湿度选择</p>
-      <mt-picker :slots="freshDegrees"
-                 @change="onValuesChange"
-                 ref="mainFreshDegrees"
-      ></mt-picker>
-      <div class="btns">
-        <mt-button size="large" class="btn-orange" @click="changeFreshDegree">确定</mt-button>
-        <mt-button size="large" @click="cancelDegreeModel">取消</mt-button>
-      </div>
-    </mt-popup>
 
     <!--解绑弹窗-->
     <div class="tip detail_tip" v-show="showUnBind">
@@ -220,12 +146,23 @@
     import Swiper from 'swiper';
     import 'swiper/dist/css/swiper.css';
     import {Range, Toast, Popup, Radio, Indicator} from 'mint-ui';
+
     import EqSwitchMachine from '../../commen/eqSwitchMachine/index'
+    import EqModal from '../../commen/eqModal/index'
+    import EqAlarm from '../../commen/eqAlarm/index'
+    import EqTimer from '../../commen/eqTimer/index'
+    import EqSetDegree from '../../commen/eqSetDegree/index'
+    import EqSetHumidity from '../../commen/eqSetHumidity/index'
 
     export default {
         name: 'detail',
         components: {
-            'vEqSwitchMachine': EqSwitchMachine
+            'vEqSwitchMachine': EqSwitchMachine,
+            'vEqModal': EqModal,
+            'vEqAlarm': EqAlarm,
+            'vEqTimer': EqTimer,
+            'vEqSetDegree': EqSetDegree,
+            'vEqSetHumidity': EqSetHumidity
         },
         data() {
             return {
@@ -273,94 +210,9 @@
                 stopRequest: false,
                 showModel: false,
                 alreadyLoad: false,
-                checklist: [
-                    // {
-                    //   value: '1',
-                    //   label: 'on'
-                    // },
-                    {
-                        value: '0',
-                        label: '自动'
-                    },
-                    // {
-                    //     value: '2',
-                    //     label: '循环'
-                    // },
-                    {
-                        value: '3',
-                        label: '低速'
-                    },
-                    {
-                        value: '4',
-                        label: '中速'
-                    },
-                    {
-                        value: '5',
-                        label: '高速'
-                    }
-                ],
                 value: '2',
-                modelList: [
-                    {
-                        value: '2',
-                        label: '制热'
-                    }, {
-                        value: '1',
-                        label: '制冷'
-                    }
-                ],
-                modelListFan: [
-                    {
-                        value: '2',
-                        label: '制热'
-                    }, {
-                        value: '1',
-                        label: '制冷'
-                    }, {
-                        value: '3',
-                        label: '通风'
-                    }
-                ],
                 showDegrees: false,
                 valueDegrees: null,
-                hotMain: [
-                    {
-                        flex: 1,
-                        values: [],
-                        className: 'slot1',
-                        textAlign: 'center',
-                        value: 15,
-                        defaultIndex: 10
-                    }
-                ],
-                coolMain: [
-                    {
-                        flex: 1,
-                        values: [],
-                        className: 'slot1',
-                        textAlign: 'center',
-                        value: 15,
-                        defaultIndex: 5
-                    }
-                ],
-                slotsFan: [
-                    {
-                        flex: 1,
-                        values: [],
-                        className: 'slot1',
-                        textAlign: 'center'
-                    }
-                ],
-                freshDegrees: [
-                    {
-                        flex: 1,
-                        values: [],
-                        className: 'slot1',
-                        textAlign: 'center',
-                        value: 15,
-                        defaultIndex: 5
-                    }
-                ],
                 roomTep: null,
                 firstRequest: true,
                 isRequest: true,
@@ -370,7 +222,8 @@
                 path: "ws://www.zhilianyueju.com/websocketDemo/",
                 socket: "",
                 drawDegree: null,
-                showFreshDegrees: false
+                showFreshDegrees: false,
+                eqParams: {}
             }
         },
         beforeMount() {
@@ -380,38 +233,6 @@
                 list.push(i);
             }
             this.list = list;
-            setTimeout(() => {
-                this.timer();
-            }, 200);
-
-            // 温度
-            // 主机制冷7-25
-            let mainCool = [];
-            for (let i = 7; i <= 25; i++) {
-                mainCool.push(i);
-            }
-            this.coolMain[0].values = mainCool;
-
-            // 主机制热15-45
-            let mainHot = [];
-            for (let i = 15; i <= 45; i++) {
-                mainHot.push(String(i));
-            }
-            this.hotMain[0].values = mainHot;
-
-            // 风盘温度
-            let fanDegree = [];
-            for (let i = 5; i <= 35; i++) {
-                fanDegree.push(String(i));
-            }
-            this.slotsFan[0].values = fanDegree;
-
-            // 湿度7-25
-            let freshDegrees = [];
-            for (let i = 7; i <= 40; i++) {
-                freshDegrees.push(i);
-            }
-            this.freshDegrees[0].values = freshDegrees;
         },
         mounted() {
             this.isRequest = true;
@@ -431,30 +252,23 @@
                 this.drawCircle();
                 if (this.getId()) {
                     this.eqDetail(this.eqId);
+                    this.getFreshEquipmentDetail();
                 }
             },
             getId() {
                 return this.$route.params.id;
             },
-            watchDegree() {
-                if (this.eqInfo.equipmentMode == 1) {
-                    this.adjustCoolTemperature(this.degrees);
-                } else if (this.eqInfo.equipmentMode == 2) {
-                    this.adjustHeatTemperature(this.degrees);
-                }
-            },
-            changeDegree() {
-                let degree = this.valueDegrees[0];
-                if (this.eqInfo.equipmentMode == 1) {
-                    this.adjustCoolTemperature(degree);
-                } else if (this.eqInfo.equipmentMode == 2) {
-                    this.adjustHeatTemperature(degree);
-                }
 
+            getFreshEquipmentDetail() {
+                let id = this.eqId;
+                this.Api.freshEquipmentDetail('id=' + id, (msg) => {
+                    if (msg.body) {
+                        this.eqParams = msg.body;
+                    }
+                })
             },
+
             initDraw() {
-                // let degrees = this.eqInfo.equipmentRoomTemperature;
-                // let degrees = this.eqInfo.sendInWaterTemerature;
                 let degrees = this.drawDegree;
                 if (degrees || degrees == 0) {
                     this.drawPointer(degrees);
@@ -495,20 +309,20 @@
                     this.firstRequest = false;
                     this.isRequest = false;
                     if (msg.body) {
+                        var data = msg.body;
                         self.type = msg.body.equipmentType;
 
                         // 获取设定温度
+                        /*制冷*/
                         if (msg.body.equipmentMode == 1) {
                             self.degrees = msg.body.equipmentCoolTemperature;
                         }
 
+                        /*制热*/
                         if (msg.body.equipmentMode == 2) {
                             self.degrees = msg.body.equipmentHeatTemperature;
                         }
 
-                        if (msg.body.equipmentMode == 3) {
-                            self.degrees = msg.body.equipmentHeatTemperature;
-                        }
                         let arrD = [];
                         arrD.push(self.degrees);
                         self.valueDegrees = arrD;
@@ -516,10 +330,6 @@
 
                         self.eqModeVal = String(msg.body.equipmentMode);
                         let arr = [];
-                        if (msg.body.equipmentMode == 3) {
-                            self.equipmentFanMode = msg.body.equipmentFanMode;
-                            self.value = String(msg.body.equipmentFanMode);
-                        }
 
                         if (msg.body.equipmentRoomTemperature) {
                             let roomTep = Number(msg.body.equipmentRoomTemperature);
@@ -531,21 +341,9 @@
                         }
 
                         // 温度仪表盘温度
-                        if (msg.body.equipmentType == 1) {//主机
-                            self.drawDegree = msg.body.sendInWaterTemerature;
-                        }
-                        if (msg.body.equipmentType == 2) {//风盘
-                            self.drawDegree = msg.body.equipmentRoomTemperature;
-                        }
+                        self.drawDegree = data.equipmentRoomTemperature;
 
                         self.initDraw();
-
-                        //取消定时刷新页面，改为websocket推送温度
-                        // if (!self.stopRequest) {
-                        //     setTimeout(() => {
-                        //         self.init();
-                        //     }, 3 * 60 * 1000)
-                        // }
 
                     } else {
                         this.showEmpty = true;
@@ -569,88 +367,14 @@
                     }
                 })
             },
-            // 调节制热温度
-            adjustHeatTemperature(temperature) {
-                let arr = [];
-                arr.push('id=' + this.getId());
-                arr.push('equipmentHeatTemperature=' + temperature);
-                let str = arr.join('&');
-                this.Api.adjustHeatTemperature(str, this.type, (msg) => {
-                    this.cancelDegreeModel();
-                    if (msg.code == 200) {
-                        this.init();
-                        // Toast('设置制热温度成功')
-                    } else {
-                        Toast(msg.message)
-                    }
-                })
-            },
-            // 调节制冷温度
-            adjustCoolTemperature(temperature) {
-                let arr = [];
-                arr.push('id=' + this.getId());
-                arr.push('equipmentCoolTemperature=' + temperature);
-                let str = arr.join('&');
-                this.Api.adjustCoolTemperature(str, this.type, (msg) => {
-                    this.cancelDegreeModel();
-                    if (msg.code == 200) {
-                        this.init();
-                        // Toast('设置制冷温度成功')
-                    } else {
-                        Toast(msg.message)
-                    }
-                })
-            },
-            // 切换风速
-            showWindSpeed() {
-                this.popupVisible = true;
-                this.value = String(this.equipmentFanMode);
-            },
-            cancelTimer() {
-                this.popupVisible = false;
-            },
-            adjustWindSpeed() {
-                let arr = [];
-                arr.push('id=' + this.getId());
-                arr.push('equipmentFanMode=' + this.value);
-                let str = arr.join('&');
-                this.popupVisible = false;
-                this.Api.adjustWindSpeed(str, (msg) => {
-                    if (msg.code == 200) {
-                        Toast('修改风速成功');
-                        this.equipmentFanMode = this.value;
-                    } else {
-                        Toast(msg.message)
-                    }
-                })
-            },
 
             hideSomething() {
                 this.showRange = false;
                 this.showMenu = false;
             },
-            changRange(e) {
-                this.closeEq(3)
-            },
             changeMenu(e) {
                 e.stopPropagation();
                 this.showMenu = !this.showMenu;
-            },
-            timer() {
-                let self = this;
-                new Swiper('.swiper-container', {
-                    initialSlide: this.degrees,
-                    slidesPerView: 'auto',
-                    centeredSlides: true,
-                    slideToClickedSlide: true,
-                    on: {
-                        slideChangeTransitionEnd: function () {
-                            // self.degrees = this.activeIndex;
-                            // self.watchDegree();
-                            // self.initDraw();
-                        },
-                    },
-                })
             },
             drawCircle() {
                 var canvas = document.getElementById('clock');
@@ -705,33 +429,6 @@
                 ctx.fill();
                 ctx.closePath();
             },
-            hideModal() {
-                this.showTip = false;
-                this.startInit();
-                this.cancelModel();
-            },
-            closeEq(flag) {
-                this.stopInit();
-                this.showTip = true;
-                // if (this.eqMode != flag) {
-                //   this.showTip = true;
-                //   this.eqFlag = flag;
-                // }
-            },
-
-            cancelModel() {
-                this.showModel = false;
-                this.startInit();
-            },
-            stopInit() {
-                this.stopRequest = true;
-            },
-            startInit() {
-                this.stopRequest = false;
-                setTimeout(() => {
-                    this.init();
-                }, 5 * 1000)
-            },
             eqUnbind() {
                 this.showModalCom('showUnBind')
             },
@@ -748,29 +445,6 @@
                     }
                 })
             },
-
-            onValuesChange(picker, values) {
-                this.valueDegrees = values;
-            },
-            showDegreeModel() {
-                // this.$refs.mainDegrees.setValues([15])
-                if (this.eqInfo.equipmentMode == 1) {
-                    this.coolMain[0].defaultIndex = this.degrees - 7
-                }
-                if (this.eqInfo.equipmentMode == 2) {
-                    this.hotMain[0].defaultIndex = this.degrees - 15
-                }
-                // if (eqInfo.equipmentMode == 3) {
-                //     this.hotMain[0].defaultIndex = this.degrees - 15
-                // }
-                this.stopInit();
-                this.showDegrees = true;
-            },
-            cancelDegreeModel() {
-                this.startInit();
-                this.showDegrees = false;
-                this.showFreshDegrees = false;
-            },
             goBack() {
                 this.$router.push({path: '/equipment'})
             },
@@ -780,9 +454,6 @@
             showModalCom(key) {
                 this[key] = true;
             },
-            chooseScene() {
-                this.$router.push({path: this.PATH.getChooseHome() + '2?id=' + this.getId()})
-            },
             socketopen: function () {
                 console.log("socket连接成功")
             },
@@ -790,11 +461,6 @@
                 console.log("连接错误")
             },
             getMessage: function (msg) {
-                // this.drawDegree = msg.data;
-                // this.initDraw();
-
-                console.log(msg)
-
                 let data = JSON.parse(msg.data);
 
                 //设备上设定的制冷的温度
@@ -877,28 +543,6 @@
             socketclose: function () {
                 console.log("socket已经关闭")
                 this.socket.close()
-            },
-
-            /*湿度修改*/
-            showFreshDegreeModel() {
-                this.showFreshDegrees = true;
-            },
-            changeFreshDegree() {
-                let temperature = this.valueDegrees[0];
-
-                let arr = [];
-                arr.push('id=' + this.getId());
-                arr.push('equipmentCoolTemperature=' + temperature);
-                let str = arr.join('&');
-                this.Api.adjustCoolTemperature(str, this.type, (msg) => {
-                    this.cancelDegreeModel();
-                    if (msg.code == 200) {
-                        this.init();
-                        // Toast('设置制冷温度成功')
-                    } else {
-                        Toast(msg.message)
-                    }
-                })
             }
         }
     }

@@ -101,6 +101,7 @@
                 },
                 path: "ws://www.zhilianyueju.com/websocketDemo/",
                 socket: "",
+                eqParams: null
             }
         },
         components: {
@@ -109,6 +110,7 @@
         mounted() {
             this.readWaterTemerature();
             this.firstRequest = true;
+            this.getFreshEquipmentDetail();
         },
 
         beforeDestroy() {
@@ -175,7 +177,15 @@
             socketclose: function () {
                 console.log("socket已经关闭")
                 this.socket.close()
-            }
+            },
+            getFreshEquipmentDetail() {
+                let id = this.getId();
+                this.Api.freshEquipmentDetail('id=' + id, (msg) => {
+                    if (msg.body) {
+                        this.eqParams = msg.body;
+                    }
+                })
+            },
         }
     }
 </script>

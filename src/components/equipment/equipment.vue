@@ -3,26 +3,12 @@
     <div class="fixed_head eqHead equipmentHead">
       <div class="left drop">
         <span class="icon-drop" @click="dropToggle" key='drop'>设备类型</span>
-        <!--                <ul class="drop-content" v-show='showDrop'>-->
-        <!--                    <li :class="eqType==-1?'active':''" @click="chooseType(-1)">全部</li>-->
-        <!--                    <li :class="eqType==1?'active':''" @click="chooseType(1)">主机</li>-->
-        <!--                    <li :class="eqType==2?'active':''" @click="chooseType(2)">风机盘管</li>-->
-        <!--                    <li :class="eqType==3?'active':''" @click="chooseType(3)">检测设备</li>-->
-        <!--                </ul>-->
       </div>
 
       <div class="left drop dropScen">
         <span class="icon-drop" @click="dropToggleScen" key='drop'>场景</span>
-        <!--                <ul class="drop-content" v-show='showDrop'>-->
-        <!--                    <li :class="eqType==-1?'active':''" @click="chooseType(-1)">全部</li>-->
-        <!--                    <li :class="eqType==1?'active':''" @click="chooseType(1)">主机</li>-->
-        <!--                    <li :class="eqType==2?'active':''" @click="chooseType(2)">风机盘管</li>-->
-        <!--                    <li :class="eqType==3?'active':''" @click="chooseType(3)">检测设备</li>-->
-        <!--                </ul>-->
       </div>
-      <!--      <router-link to="/equipment/add">-->
       <span class="right icon-add" @click="showSheet"></span>
-      <!--      </router-link>-->
 
     </div>
     <div class="loadMoreWrapper">
@@ -49,7 +35,7 @@
         <div class="container">
           <div class="list">
             <div class="item eqItem" v-for="(data,index) in list" :key="data.id">
-              <router-link :to="'/equipment/detail/'+data.id">
+              <div @click="goDetail(data)" :to="'/equipment/detail/'+data.id">
                 <span v-if="data.equipmentType==1" class="eq_icon eq_icon_1"></span>
                 <span v-else-if="data.equipmentType==2" class="eq_icon eq_icon_2"></span>
                 <span v-else-if="data.equipmentType==3" class="eq_icon eq_icon_3"></span>
@@ -71,7 +57,7 @@
                   <p class="right">
                     {{data.equipmentRoomTemperature?'温度:'+data.equipmentRoomTemperature+'°C':''}}</p>
                 </div>
-              </router-link>
+              </div>
               <div class="fixedOpt">
 
                 <span class="online" v-if="data.online==1">在线</span>
@@ -187,6 +173,7 @@
 <script>
     import menu from '../menu/menu'
     import {Toast, Indicator, Actionsheet} from 'mint-ui';
+    import {PATH} from "../../router/path";
 
     export default {
         name: 'equipment',
@@ -492,13 +479,26 @@
                 this.Api.useSceneList(str, (msg) => {
                     if (msg.code == 200) {
                         this.scenList = msg.body.results;
-                        // console.log(this.scenList)
                     }
                 });
             },
 
             chooseScen(id) {
                 this.sceneId = id;
+            },
+
+            goDetail(data) {
+                let equipmentType = data.equipmentType;
+                let id = data.id;
+                if (equipmentType == 3) {
+                    this.$router.push({
+                        path: PATH.goFreshDetail() + id
+                    })
+                } else {
+                    this.$router.push({
+                        path: PATH.goDetail() + id
+                    })
+                }
             }
 
         }

@@ -8,7 +8,7 @@
         class="pubPopup"
         defaultIndex="[3]"
         position="bottom">
-      <p class="tipText tip-text-border">温度选择</p>
+      <p class="tipText tip-text-border">湿度选择</p>
       <mt-picker :slots="eqInfo.equipmentMode==1?coolMain:hotMain"
                  @change="onValuesChange"
                  ref="mainDegrees"
@@ -32,6 +32,10 @@
                 showDegrees: false,
                 degrees: 0,
                 valueDegrees: [],
+                coolMin: 40,
+                coolMax: 60,
+                heatMin: 45,
+                heatMax: 65,
                 hotMain: [
                     {
                         flex: 1,
@@ -66,14 +70,14 @@
             // 湿度
             // 新风制冷40-60
             let mainCool = [];
-            for (let i = 40; i <= 60; i++) {
+            for (let i = this.coolMin; i <= this.coolMax; i++) {
                 mainCool.push(i);
             }
             this.coolMain[0].values = mainCool;
 
             // 新风制热45-60
             let mainHot = [];
-            for (let i = 45; i <= 60; i++) {
+            for (let i = this.heatMin; i <= this.heatMax; i++) {
                 mainHot.push(String(i));
             }
             this.hotMain[0].values = mainHot;
@@ -85,7 +89,7 @@
             getDegree() {
                 let data = this.eqInfo;
                 let degrees = 0;
-                // 获取设定温度
+                // 获取设定湿度
                 if (data.equipmentMode == 1) {
                     degrees = this.equipmentCoolTemperature;
                 }
@@ -94,19 +98,15 @@
                     degrees = this.equipmentHeatTemperature;
                 }
 
-                if (data.equipmentMode == 3) {
-                    degrees = this.equipmentHeatTemperature;
-                }
-
                 return degrees;
             },
             showDegreeModel() {
                 let degrees = this.getDegree();
                 if (this.eqInfo.equipmentMode == 1) {
-                    this.coolMain[0].defaultIndex = degrees - 7
+                    this.coolMain[0].defaultIndex = degrees - this.coolMin
                 }
                 if (this.eqInfo.equipmentMode == 2) {
-                    this.hotMain[0].defaultIndex = degrees - 15
+                    this.hotMain[0].defaultIndex = degrees - this.heatMin
                 }
                 this.showDegrees = true;
             },
@@ -131,9 +131,9 @@
             adjustHeatTemperature(temperature) {
                 let arr = [];
                 arr.push('id=' + this.getId());
-                arr.push('equipmentHeatTemperature=' + temperature);
+                arr.push('equipmentHeatHumidity=' + temperature);
                 let str = arr.join('&');
-                this.Api.freshAdjustHeatTemperature(str, this.type, (msg) => {
+                this.Api.freshAdjustHeatHumidity(str, (msg) => {
                     this.cancelDegreeModel();
                     if (msg.code == 200) {
                         this.$emit("init");
@@ -146,9 +146,9 @@
             adjustCoolTemperature(temperature) {
                 let arr = [];
                 arr.push('id=' + this.getId());
-                arr.push('equipmentCoolTemperature=' + temperature);
+                arr.push('equipmentCoolHumidity=' + temperature);
                 let str = arr.join('&');
-                this.Api.freshAdjustCoolTemperature(str, this.type, (msg) => {
+                this.Api.freshAdjustCoolHumidity(str, (msg) => {
                     this.cancelDegreeModel();
                     if (msg.code == 200) {
                         this.$emit("init");
