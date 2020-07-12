@@ -182,7 +182,7 @@
             },
             getFreshEquipmentDetail() {
                 let id = this.getId();
-                this.Api.freshEquipmentDetail('id=' + id, (msg) => {
+                this.Api.freshEquipmentDetail('equipmentId=' + id, (msg) => {
                     if (msg.body) {
                         this.eqParams = msg.body;
                     }

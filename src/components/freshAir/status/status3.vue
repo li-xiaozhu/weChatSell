@@ -10,7 +10,7 @@
         <div class="clear">
           <p>送风威压
             <span class="right">
-              <span class="black">0.00</span>KPa
+              <span class="black">{{eqParams&&eqParams.songfengweiya?eqParams.songfengweiya:0}}</span>KPa
             </span>
           </p>
         </div>
@@ -19,7 +19,7 @@
         <div class="clear">
           <p>回风温度
             <span class="right">
-              <span class="black">0.00</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.huifengwendu?eqParams.huifengwendu:0}}</span>mg/m3
             </span>
           </p>
         </div>
@@ -28,7 +28,7 @@
         <div class="clear">
           <p>回风湿度
             <span class="right">
-              <span class="black">0.00</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.huifengshidu?eqParams.huifengshidu:0}}</span>mg/m3
             </span>
           </p>
         </div>
@@ -37,7 +37,7 @@
         <div class="clear">
           <p>出风温度
             <span class="right">
-              <span class="black">0.00</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.chufengwendu?eqParams.chufengwendu:0}}</span>mg/m3
             </span>
           </p>
         </div>
@@ -46,7 +46,7 @@
         <div class="clear">
           <p>露点温度
             <span class="right">
-              <span class="black">0.00</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.ludianwendu?eqParams.ludianwendu:0}}</span>mg/m3
             </span>
           </p>
         </div>
@@ -56,7 +56,7 @@
         <div class="clear">
           <p>加湿器温度
             <span class="right">
-              <span class="black">56</span>℃
+              <span class="black">{{eqParams&&eqParams.jiashiqiwendu?eqParams.jiashiqiwendu:0}}</span>℃
             </span>
           </p>
         </div>
@@ -65,7 +65,7 @@
         <div class="clear">
           <p>顶棚一次出水
             <span class="right">
-              <span class="black">0.00</span>%
+              <span class="black">{{eqParams&&eqParams.dingpengyicichushui?eqParams.dingpengyicichushui:0}}</span>%
             </span>
           </p>
         </div>
@@ -74,7 +74,7 @@
         <div class="clear">
           <p>定棚二次进水
             <span class="right">
-              <span class="black">0.00</span>ppm
+              <span class="black">{{eqParams&&eqParams.dingpengercijinshui?eqParams.dingpengercijinshui:0}}</span>ppm
             </span>
           </p>
         </div>
@@ -83,7 +83,7 @@
         <div class="clear">
           <p>定棚二次出水
             <span class="right">
-              <span class="black">0.00</span>ppm
+              <span class="black">{{eqParams&&eqParams.dingpengercichushui?eqParams.dingpengercichushui:0}}</span>ppm
             </span>
           </p>
         </div>
@@ -92,7 +92,7 @@
         <div class="clear">
           <p>表冷器进水
             <span class="right">
-              <span class="black">0.00</span>ppm
+              <span class="black">{{eqParams&&eqParams.biaolengqijinshui?eqParams.biaolengqijinshui:0}}</span>ppm
             </span>
           </p>
         </div>
@@ -101,7 +101,7 @@
         <div class="clear">
           <p>表冷器出水
             <span class="right">
-              <span class="black">0.00</span>ppm
+              <span class="black">{{eqParams&&eqParams.biaolengqichushui?eqParams.biaolengqichushui:0}}</span>ppm
             </span>
           </p>
         </div>
@@ -209,7 +209,7 @@
             },
             getFreshEquipmentDetail() {
                 let id = this.getId();
-                this.Api.freshEquipmentDetail('id=' + id, (msg) => {
+                this.Api.freshEquipmentDetail('equipmentId=' + id, (msg) => {
                     if (msg.body) {
                         this.eqParams = msg.body;
                     }

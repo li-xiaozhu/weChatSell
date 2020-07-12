@@ -61,6 +61,7 @@
 .detail_head .go_back {
     background-image: none;
     padding: 0 !important;
+    position: static;
 }
 
 .detail_head .go_back .goBackBtn {

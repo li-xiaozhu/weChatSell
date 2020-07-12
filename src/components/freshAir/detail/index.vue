@@ -264,7 +264,7 @@
 
             getFreshEquipmentDetail() {
                 let id = this.eqId;
-                this.Api.freshEquipmentDetail('id=' + id, (msg) => {
+                this.Api.freshEquipmentDetail('equipmentId=' + id, (msg) => {
                     if (msg.body) {
                         this.eqParams = msg.body;
                     }

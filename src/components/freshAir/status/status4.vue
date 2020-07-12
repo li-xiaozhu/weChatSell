@@ -128,7 +128,7 @@
         <div class="clear">
           <p>负氧离子
             <span class="right">
-              <span class="black">Y00</span>
+              <span class="black">{{eqParams&&eqParams.fuyanglizi?eqParams.fuyanglizi:0}}</span>
             </span>
           </p>
         </div>
@@ -137,7 +137,7 @@
         <div class="clear">
           <p>顶棚辐射泵
             <span class="right">
-              <span class="black">Y01</span>
+              <span class="black">{{eqParams&&eqParams.dingpengfushebeng?eqParams.dingpengfushebeng:0}}</span>
             </span>
           </p>
         </div>
@@ -146,7 +146,7 @@
         <div class="clear">
           <p>一次泵
             <span class="right">
-              <span class="black">Y02</span>
+              <span class="black">{{eqParams&&eqParams.yicibeng?eqParams.yicibeng:0}}</span>
             </span>
           </p>
         </div>
@@ -155,7 +155,7 @@
         <div class="clear">
           <p>加湿器排水
             <span class="right">
-              <span class="black">Y03</span>
+              <span class="black">{{eqParams&&eqParams.jiashiqipaishui?eqParams.jiashiqipaishui:0}}</span>
             </span>
           </p>
         </div>
@@ -164,7 +164,7 @@
         <div class="clear">
           <p>加湿器补水
             <span class="right">
-              <span class="black">Y04</span>
+              <span class="black">{{eqParams&&eqParams.jiashiqibushui?eqParams.jiashiqibushui:0}}</span>
             </span>
           </p>
         </div>
@@ -173,7 +173,7 @@
         <div class="clear">
           <p>加湿器加湿
             <span class="right">
-              <span class="black">Y05</span>
+              <span class="black">{{eqParams&&eqParams.jiashiqijiashi?eqParams.jiashiqijiashi:0}}</span>
             </span>
           </p>
         </div>
@@ -182,7 +182,7 @@
         <div class="clear">
           <p>精加热
             <span class="right">
-              <span class="black">Y07</span>
+              <span class="black">{{eqParams&&eqParams.jingjiare?eqParams.jingjiare:0}}</span>
             </span>
           </p>
         </div>
@@ -191,7 +191,7 @@
         <div class="clear">
           <p>排风机
             <span class="right">
-              <span class="black">Y08</span>
+              <span class="black">{{eqParams&&eqParams.paifengji?eqParams.paifengji:0}}</span>
             </span>
           </p>
         </div>
@@ -200,7 +200,7 @@
         <div class="clear">
           <p>新风机
             <span class="right">
-              <span class="black">Y10</span>
+              <span class="black">{{eqParams&&eqParams.xinfengji?eqParams.xinfengji:0}}</span>
             </span>
           </p>
         </div>
@@ -308,7 +308,7 @@
             },
             getFreshEquipmentDetail() {
                 let id = this.getId();
-                this.Api.freshEquipmentDetail('id=' + id, (msg) => {
+                this.Api.freshEquipmentDetail('equipmentId=' + id, (msg) => {
                     if (msg.body) {
                         this.eqParams = msg.body;
                     }

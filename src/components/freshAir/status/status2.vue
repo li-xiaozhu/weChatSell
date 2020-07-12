@@ -10,7 +10,7 @@
         <div class="clear">
           <p>送风机
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.songfengji?eqParams.songfengji:0}}</span>mg/m3
             </span>
           </p>
         </div>
@@ -19,7 +19,7 @@
         <div class="clear">
           <p>表冷器三通阀
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.biaolengqisantongfa?eqParams.biaolengqisantongfa:0}}</span>mg/m3
             </span>
           </p>
         </div>
@@ -28,7 +28,7 @@
         <div class="clear">
           <p>辐射三通阀
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.fushesantongfa?eqParams.fushesantongfa:0}}</span>mg/m3
             </span>
           </p>
         </div>
@@ -136,7 +136,7 @@
             },
             getFreshEquipmentDetail() {
                 let id = this.getId();
-                this.Api.freshEquipmentDetail('id=' + id, (msg) => {
+                this.Api.freshEquipmentDetail('equipmentId=' + id, (msg) => {
                     if (msg.body) {
                         this.eqParams = msg.body;
                     }
