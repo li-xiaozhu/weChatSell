@@ -24,8 +24,12 @@ let Path = {
     ServiceDetail: '/service/detail/:id',
     AboutUs: '/about',
     FreshAirDetail: '/fresh/detail/:id',
-    FreshAirStatus: '/fresh/status/:id',
-    FreshAirParams: '/fresh/params/:id'
+    // FreshAirStatus: '/fresh/status/:id',
+    FreshAirParams: '/fresh/params/:id',
+    FreshStatus1: '/fresh/status1/:id',
+    FreshStatus2: '/fresh/status2/:id',
+    FreshStatus3: '/fresh/status3/:id',
+    FreshStatus4: '/fresh/status4/:id',
 };
 
 let PATH = {
@@ -52,6 +56,18 @@ let PATH = {
     },
     goFreshDetail() {
         return '/fresh/detail/'
+    },
+    goFreshStatus1() {
+        return '/fresh/status1/'
+    },
+    goFreshStatus2() {
+        return '/fresh/status2/'
+    },
+    goFreshStatus3() {
+        return '/fresh/status3/'
+    },
+    goFreshStatus4() {
+        return '/fresh/status4/'
     }
 };
 

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span class="item" @click="showDegreeModel"><span class="icon-f1"></span>温度设定</span>
+    <span class="item" @click="showDegreeModel"><span class="icon-f1"></span>{{addType?eqInfo.equipmentMode==1?'制冷':'制热':''}}温度设定</span>
 
     <!--    温度切换-->
     <mt-popup
@@ -26,7 +26,7 @@
 
     export default {
         name: 'eqSetDegree',
-        props: ['eqInfo', 'id'],
+        props: ['eqInfo', 'id','addType'],
         data() {
             return {
                 showDegrees: false,

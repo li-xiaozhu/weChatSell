@@ -4,11 +4,11 @@
     <router-link :to="'/equipment'">
       <p class="freshHome">主页</p>
     </router-link>
-    <p class="freshTitle">环境空气质量</p>
+    <p class="freshTitle">模拟量输出</p>
     <div class="list list_normal list_no_arrow list_info">
       <div class="item">
         <div class="clear">
-          <p>甲醛
+          <p>送风机
             <span class="right">
               <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
             </span>
@@ -17,64 +17,18 @@
       </div>
       <div class="item">
         <div class="clear">
-          <p>TVOC
+          <p>表冷器三通阀
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.tvoc?eqParams.tvoc:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>C6H6
+          <p>辐射三通阀
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.c6h6?eqParams.c6h6:0}}</span>mg/m3
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>PM2.5
-            <span class="right">
-              <span class="black">{{eqParams&&eqParams.pm25?eqParams.pm25:0}}</span>mg/m3
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>pm10
-            <span class="right">
-              <span class="black">{{eqParams&&eqParams.pm10?eqParams.pm10:0}}</span>mg/m3
-            </span>
-          </p>
-        </div>
-      </div>
-
-      <div class="item">
-        <div class="clear">
-          <p>温度
-            <span class="right">
-              <span class="black">{{eqParams&&eqParams.wendu?eqParams.wendu:0}}</span>℃
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>湿度
-            <span class="right">
-              <span class="black">{{eqParams&&eqParams.shidu?eqParams.shidu:0}}</span>%
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>C02
-            <span class="right">
-              <span class="black">{{eqParams&&eqParams.c02?eqParams.c02:0}}</span>ppm
+              <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
             </span>
           </p>
         </div>

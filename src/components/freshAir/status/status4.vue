@@ -1,52 +1,52 @@
 <template>
   <div class="headFixed freshStatus">
     <HeadNav title="系统状态"></HeadNav>
-    <router-link :to="'/equipment'">
-      <p class="freshHome">主页</p>
-    </router-link>
-    <p class="freshTitle">环境空气质量</p>
+      <router-link :to="'/equipment'">
+          <p class="freshHome">主页</p>
+      </router-link>
+    <!--<p class="freshTitle">环境空气质量</p>-->
     <div class="list list_normal list_no_arrow list_info">
       <div class="item">
         <div class="clear">
-          <p>甲醛
+          <p>三相保护
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
+              <span class="black">X01</span>
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>TVOC
+          <p>防冻开关1
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.tvoc?eqParams.tvoc:0}}</span>mg/m3
+              <span class="black">X01</span>
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>C6H6
+          <p>防冻开关2
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.c6h6?eqParams.c6h6:0}}</span>mg/m3
+              <span class="black">X02</span>
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>PM2.5
+          <p>燃气报警
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.pm25?eqParams.pm25:0}}</span>mg/m3
+              <span class="black">X03</span>
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>pm10
+          <p>漏水报警
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.pm10?eqParams.pm10:0}}</span>mg/m3
+              <span class="black">X04</span>
             </span>
           </p>
         </div>
@@ -54,27 +54,153 @@
 
       <div class="item">
         <div class="clear">
-          <p>温度
+          <p>露点报警
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.wendu?eqParams.wendu:0}}</span>℃
+              <span class="black">X05</span>
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>湿度
+          <p>加湿器漏水
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.shidu?eqParams.shidu:0}}</span>%
+              <span class="black">X06</span>
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>C02
+          <p>加湿器过热
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.c02?eqParams.c02:0}}</span>ppm
+              <span class="black">X07</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>加湿器水位上限
+            <span class="right">
+              <span class="black">X10</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>加湿器水位下限
+            <span class="right">
+              <span class="black">X11</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>高效过滤
+            <span class="right">
+              <span class="black">X12</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>初中效过滤
+            <span class="right">
+              <span class="black">X13</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>送风风压过大
+            <span class="right">
+              <span class="black">X14</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>负氧离子
+            <span class="right">
+              <span class="black">Y00</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>顶棚辐射泵
+            <span class="right">
+              <span class="black">Y01</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>一次泵
+            <span class="right">
+              <span class="black">Y02</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>加湿器排水
+            <span class="right">
+              <span class="black">Y03</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>加湿器补水
+            <span class="right">
+              <span class="black">Y04</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>加湿器加湿
+            <span class="right">
+              <span class="black">Y05</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>精加热
+            <span class="right">
+              <span class="black">Y07</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>排风机
+            <span class="right">
+              <span class="black">Y08</span>
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>新风机
+            <span class="right">
+              <span class="black">Y10</span>
             </span>
           </p>
         </div>

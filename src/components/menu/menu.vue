@@ -1,5 +1,5 @@
 <template>
-    <ul class="menu">
+    <ul class="smartMenu">
         <li class="l1" :class="active==1?'active':''" @click="goPatth('/equipment')">
             <span></span>我的设备 <p :class="isAlarm==0?'':'isAlarm'"></p>
         </li>

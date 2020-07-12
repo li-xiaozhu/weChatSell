@@ -1,7 +1,7 @@
 .detail_head {
-    background: #3C7CFF;
-    color: #fff;
-    border-bottom: none;
+    background: #3C7CFF !important;
+    color: #fff !important;
+    border-bottom: none !important;
     padding: 0 15px;
 }
 
@@ -60,11 +60,12 @@
 
 .detail_head .go_back {
     background-image: none;
+    padding: 0 !important;
 }
 
-.detail_head .goBackBtn {
+.detail_head .go_back .goBackBtn {
     display: inline-block;
-    background-image: url('../../../assets/images/fanhui_white.png');
+    background-image: url('../../../assets/images/fanhui_white.png') !important;
     background-size: 22px;
     background-position: center;
     background-repeat: no-repeat;

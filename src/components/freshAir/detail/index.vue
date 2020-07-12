@@ -17,7 +17,7 @@
             <li>设备信息</li>
           </router-link>
 
-          <router-link :to="'/equipment/status/'+this.getId()" v-show="eqInfo&&eqInfo.equipmentType==1">
+          <router-link :to="'/fresh/status4/'+this.getId()">
             <li>设备状态</li>
           </router-link>
 
@@ -82,34 +82,36 @@
 
         <!--        环境空气质量-->
         <div class="eqAir">
-          <p class="aTitle">环境空气质量</p>
-          <ul class="clearfix">
-            <li>
-              <div>
-                <p class="aName">CO2</p>
-                <p class="aText text-danger">{{eqParams&&eqParams.co2?eqParams.co2:0}}ppm</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <p class="aName">TVOC</p>
-                <p class="aText text-success">{{eqParams&&eqParams.tvoc?eqParams.tvoc:0}}mg</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <p class="aName">PM2.5</p>
-                <p class="aText text-blue">{{eqParams&&eqParams.pm25?eqParams.pm25:0}}ug</p>
-              </div>
-            </li>
-            <li>
-              <div>
-                <p class="aName">甲醛</p>
-                <p class="aText text-orange">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}mg</p>
-              </div>
-            </li>
-          </ul>
-          <p class="aBot">系统状态：{{eqInfo.equipmentStatus==0?'关闭':'运行'}}</p>
+          <router-link :to="PATH.goFreshStatus1()+this.getId()">
+            <p class="aTitle">环境空气质量</p>
+            <ul class="clearfix">
+              <li>
+                <div>
+                  <p class="aName">CO2</p>
+                  <p class="aText text-danger">{{eqParams&&eqParams.co2?eqParams.co2:0}}ppm</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="aName">TVOC</p>
+                  <p class="aText text-success">{{eqParams&&eqParams.tvoc?eqParams.tvoc:0}}mg</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="aName">PM2.5</p>
+                  <p class="aText text-blue">{{eqParams&&eqParams.pm25?eqParams.pm25:0}}ug</p>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <p class="aName">甲醛</p>
+                  <p class="aText text-orange">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}mg</p>
+                </div>
+              </li>
+            </ul>
+            <p class="aBot">系统状态：{{eqInfo.equipmentStatus==0?'关闭':'运行'}}</p>
+          </router-link>
         </div>
 
         <!--用户参数-->
@@ -143,9 +145,10 @@
   </div>
 </template>
 <script>
-    import Swiper from 'swiper';
-    import 'swiper/dist/css/swiper.css';
+    // import Swiper from 'swiper';
+    // import 'swiper/dist/css/swiper.css';
     import {Range, Toast, Popup, Radio, Indicator} from 'mint-ui';
+    import PATH from '../../../router/path'
 
     import EqSwitchMachine from '../../commen/eqSwitchMachine/index'
     import EqModal from '../../commen/eqModal/index'

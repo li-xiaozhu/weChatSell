@@ -1,174 +1,174 @@
 <template>
-  <div class="equipment headFixed">
-    <div class="fixed_head eqHead equipmentHead">
-      <div class="left drop">
-        <span class="icon-drop" @click="dropToggle" key='drop'>设备类型</span>
-      </div>
+    <div class="equipment headFixed">
+        <div class="fixed_head eqHead equipmentHead">
+            <div class="left drop">
+                <span class="icon-drop" @click="dropToggle" key='drop'>设备类型</span>
+            </div>
 
-      <div class="left drop dropScen">
-        <span class="icon-drop" @click="dropToggleScen" key='drop'>场景</span>
-      </div>
-      <span class="right icon-add" @click="showSheet"></span>
+            <div class="left drop dropScen">
+                <span class="icon-drop" @click="dropToggleScen" key='drop'>场景</span>
+            </div>
+            <span class="right icon-add" @click="showSheet"></span>
 
-    </div>
-    <div class="loadMoreWrapper">
-      <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
-                   ref="loadmore">
-        <div class="headSwiper"></div>
-        <mt-swipe :auto="4000" class="banner_swiper">
-          <mt-swipe-item
-              style="background-image:url('https://ss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=e605ea06b60e7bec3cda05e11f2eb9fa/960a304e251f95ca0ecc6cbfc7177f3e670952fa.jpg')">
-            <p>智能家居，改变我们的生活品质</p>
-            <span>文化</span>
-          </mt-swipe-item>
-          <mt-swipe-item
-              style="background-image:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554033044399&di=f12a5d940682dd61da3853f2a19062e4&imgtype=0&src=http%3A%2F%2Fpic.oceano.com.cn%2Fexhibitionimage%2F18%2F18099%2F28kfBHenp6a8CB2FV6F9Tw.jpg">
-            <p>智能家居，改变我们的生活品质</p>
-            <span>文化</span>
-          </mt-swipe-item>
-          <!--                    <mt-swipe-item-->
-          <!--                        style="background-image:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554033044398&di=4395056e13a29ac0cb449c1b01ddc80d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01b1be595e81d0a8012193a3e99ffe.jpg%402o.jpg">-->
-          <!--                        <p>智能家居，改变我们的生活品质</p>-->
-          <!--                        <span>文化</span>-->
-          <!--                    </mt-swipe-item>-->
-        </mt-swipe>
-        <div class="container">
-          <div class="list">
-            <div class="item eqItem" v-for="(data,index) in list" :key="data.id">
-              <div @click="goDetail(data)" :to="'/equipment/detail/'+data.id">
-                <span v-if="data.equipmentType==1" class="eq_icon eq_icon_1"></span>
-                <span v-else-if="data.equipmentType==2" class="eq_icon eq_icon_2"></span>
-                <span v-else-if="data.equipmentType==3" class="eq_icon eq_icon_3"></span>
-                <span v-else class="icon_2"></span>
-                <div class="clear itemTop">
-                  <!--                                    设备名称-->
-                  <p class="fs15 left">{{data.equipmentName}}</p>
-                  <!--                                    设备模式-->
-                  <span v-if="data.equipmentMode==1" class="eqModeIcon eqModeIcon_cold"></span>
-                  <span v-if="data.equipmentMode==2" class="eqModeIcon eqModeIcon_hot"></span>
-                  <span v-if="data.equipmentMode==3" class="eqModeIcon eqModeIcon_fan"></span>
-                  <!--                                    是否有设备故障-->
-                  <router-link :to="'/fault/'+data.id" class="eqAlarm left">
-                    <span v-if="data.isAlarm!=null&&data.isAlarm!=0" class="icon-warn"></span>
-                  </router-link>
-                </div>
-                <div class="clear itemBot">
-                  <p class="left">{{data.useScene}} {{data.room}}</p>
-                  <p class="right">
-                    {{data.equipmentRoomTemperature?'温度:'+data.equipmentRoomTemperature+'°C':''}}</p>
-                </div>
-              </div>
-              <div class="fixedOpt">
+        </div>
+        <div class="loadMoreWrapper">
+            <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded"
+                         ref="loadmore">
+                <div class="headSwiper"></div>
+                <mt-swipe :auto="4000" class="banner_swiper">
+                    <mt-swipe-item
+                            style="background-image:url('https://ss0.baidu.com/7Po3dSag_xI4khGko9WTAnF6hhy/image/h%3D300/sign=e605ea06b60e7bec3cda05e11f2eb9fa/960a304e251f95ca0ecc6cbfc7177f3e670952fa.jpg')">
+                        <p>智能家居，改变我们的生活品质</p>
+                        <span>文化</span>
+                    </mt-swipe-item>
+                    <mt-swipe-item
+                            style="background-image:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554033044399&di=f12a5d940682dd61da3853f2a19062e4&imgtype=0&src=http%3A%2F%2Fpic.oceano.com.cn%2Fexhibitionimage%2F18%2F18099%2F28kfBHenp6a8CB2FV6F9Tw.jpg">
+                        <p>智能家居，改变我们的生活品质</p>
+                        <span>文化</span>
+                    </mt-swipe-item>
+                    <!--                    <mt-swipe-item-->
+                    <!--                        style="background-image:url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1554033044398&di=4395056e13a29ac0cb449c1b01ddc80d&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F01b1be595e81d0a8012193a3e99ffe.jpg%402o.jpg">-->
+                    <!--                        <p>智能家居，改变我们的生活品质</p>-->
+                    <!--                        <span>文化</span>-->
+                    <!--                    </mt-swipe-item>-->
+                </mt-swipe>
+                <div class="container">
+                    <div class="list">
+                        <div class="item eqItem" v-for="(data,index) in list" :key="data.id">
+                            <div @click="goDetail(data)" :to="'/equipment/detail/'+data.id">
+                                <span v-if="data.equipmentType==1" class="eq_icon eq_icon_1"></span>
+                                <span v-else-if="data.equipmentType==2" class="eq_icon eq_icon_2"></span>
+                                <span v-else-if="data.equipmentType==3" class="eq_icon eq_icon_3"></span>
+                                <span v-else class="icon_2"></span>
+                                <div class="clear itemTop">
+                                    <!--                                    设备名称-->
+                                    <p class="fs15 left">{{data.equipmentName}}</p>
+                                    <!--                                    设备模式-->
+                                    <span v-if="data.equipmentMode==1" class="eqModeIcon eqModeIcon_cold"></span>
+                                    <span v-if="data.equipmentMode==2" class="eqModeIcon eqModeIcon_hot"></span>
+                                    <span v-if="data.equipmentMode==3" class="eqModeIcon eqModeIcon_fan"></span>
+                                    <!--                                    是否有设备故障-->
+                                    <router-link :to="'/fault/'+data.id" class="eqAlarm left">
+                                        <span v-if="data.isAlarm!=null&&data.isAlarm!=0" class="icon-warn"></span>
+                                    </router-link>
+                                </div>
+                                <div class="clear itemBot">
+                                    <p class="left">{{data.useScene}} {{data.room}}</p>
+                                    <p class="right">
+                                        {{data.equipmentRoomTemperature?'温度:'+data.equipmentRoomTemperature+'°C':''}}</p>
+                                </div>
+                            </div>
+                            <div class="fixedOpt">
 
-                <span class="online" v-if="data.online==1">在线</span>
-                <span class="online online_remove" v-else>离线</span>
+                                <span class="online" v-if="data.online==1">在线</span>
+                                <span class="online online_remove" v-else>离线</span>
 
-                <span class="eqListStatus">
+                                <span class="eqListStatus">
                                     <mt-switch v-model="data.equipmentStatus==1?true:false"
                                                @change="changOpenVal(data,index)"></mt-switch>
                                 </span>
-                <!--<span class="icon-del delEq" @click="eqDel(data.id,index)">删除</span>-->
-              </div>
+                                <!--<span class="icon-del delEq" @click="eqDel(data.id,index)">删除</span>-->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="noInfo" v-show="list&&list.length==0">
+                        暂无信息
+                    </div>
+                    <div class="text-center moreData" v-show="!more&&!(list&&list.length==0)">
+                        没有更多数据了...
+                    </div>
+                </div>
+
+            </mt-loadmore>
+
+        </div>
+        <v-menu active='1' :isAlarm="isAlarm"></v-menu>
+
+        <mt-actionsheet
+                :actions="actions"
+                v-model="sheetVisible">
+        </mt-actionsheet>
+
+
+        <!-- 筛选-->
+        <mt-popup
+                v-model="showChoose"
+                class="pubPopup"
+                position="bottom">
+            <p class="tipText tip-text-border">筛选</p>
+            <mt-picker :slots="chooseList"
+                       value-key="name"
+                       @change="onValuesChange"
+                       ref="mainDegrees"
+            ></mt-picker>
+            <div class="btns">
+                <mt-button size="large" class="btn-orange" @click="sureChoose">确定</mt-button>
+                <mt-button size="large" @click="cancelChoose">取消</mt-button>
             </div>
-          </div>
-          <div class="noInfo" v-show="list&&list.length==0">
-            暂无信息
-          </div>
-          <div class="text-center moreData" v-show="!more&&!(list&&list.length==0)">
-            没有更多数据了...
-          </div>
+        </mt-popup>
+
+        <!--        关机提示-->
+        <div class="tip detail_tip" v-show="closeTip">
+            <div class="content">
+                <div class="tip_body closeTip_body">
+                    <div class="modal-warning">
+                        <span :class='this.closeIcon'></span>
+                        <p>{{this.closeText}}</p>
+                    </div>
+                </div>
+            </div>
         </div>
 
-      </mt-loadmore>
+        <!--        产品类别-->
+        <div class="tip detail_tip" v-show="choosePro">
+            <div class="content">
+                <div class="tip_con tip_pro_con">
+                    <p class="tip_pro_name">产品类别</p>
+                    <ul class="tip_pro_list">
+                        <li :class="eqType==-1?'active':''" @click="chooseProType(-1)">全部
+                            <span class="icon-check"></span>
+                        </li>
+                        <li :class="eqType==1?'active':''" @click="chooseProType(1)">主机
+                            <span class="icon-check"></span>
+                        </li>
+                        <li :class="eqType==2?'active':''" @click="chooseProType(2)">风机盘管
+                            <span class="icon-check"></span>
+                        </li>
+                        <li :class="eqType==3?'active':''" @click="chooseProType(3)">检测设备
+                            <span class="icon-check"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tip_foot tip_foot_detail tip_foot_flex">
+                    <span @click="dropToggleCanel">取消</span>
+                    <span @click="chooseType()">确定</span>
+                </div>
+            </div>
+        </div>
+
+        <!--        产品场景筛选-->
+        <div class="tip detail_tip" v-show="chooseScenVisible">
+            <div class="content">
+                <div class="tip_con tip_pro_con">
+                    <p class="tip_pro_name">场景</p>
+                    <ul class="tip_pro_list">
+                        <li :class="sceneId==-1?'active':''" @click="chooseScen(-1)">全部
+                            <span class="icon-check"></span>
+                        </li>
+                        <li v-for="(item,index) in scenList" :class="item.id==sceneId?'active':''"
+                            @click="chooseScen(item.id)">{{item.name}}
+                            <span class="icon-check"></span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tip_foot tip_foot_detail tip_foot_flex">
+                    <span @click="dropScenCancel">取消</span>
+                    <span @click="eqList(1)">确定</span>
+                </div>
+            </div>
+        </div>
 
     </div>
-    <v-menu active='1' :isAlarm="isAlarm"></v-menu>
-
-    <mt-actionsheet
-        :actions="actions"
-        v-model="sheetVisible">
-    </mt-actionsheet>
-
-
-    <!-- 筛选-->
-    <mt-popup
-        v-model="showChoose"
-        class="pubPopup"
-        position="bottom">
-      <p class="tipText tip-text-border">筛选</p>
-      <mt-picker :slots="chooseList"
-                 value-key="name"
-                 @change="onValuesChange"
-                 ref="mainDegrees"
-      ></mt-picker>
-      <div class="btns">
-        <mt-button size="large" class="btn-orange" @click="sureChoose">确定</mt-button>
-        <mt-button size="large" @click="cancelChoose">取消</mt-button>
-      </div>
-    </mt-popup>
-
-    <!--        关机提示-->
-    <div class="tip detail_tip" v-show="closeTip">
-      <div class="content">
-        <div class="tip_body closeTip_body">
-          <div class="modal-warning">
-            <span :class='this.closeIcon'></span>
-            <p>{{this.closeText}}</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!--        产品类别-->
-    <div class="tip detail_tip" v-show="choosePro">
-      <div class="content">
-        <div class="tip_con tip_pro_con">
-          <p class="tip_pro_name">产品类别</p>
-          <ul class="tip_pro_list">
-            <li :class="eqType==-1?'active':''" @click="chooseProType(-1)">全部
-              <span class="icon-check"></span>
-            </li>
-            <li :class="eqType==1?'active':''" @click="chooseProType(1)">主机
-              <span class="icon-check"></span>
-            </li>
-            <li :class="eqType==2?'active':''" @click="chooseProType(2)">风机盘管
-              <span class="icon-check"></span>
-            </li>
-            <li :class="eqType==3?'active':''" @click="chooseProType(3)">检测设备
-              <span class="icon-check"></span>
-            </li>
-          </ul>
-        </div>
-        <div class="tip_foot tip_foot_detail tip_foot_flex">
-          <span @click="dropToggleCanel">取消</span>
-          <span @click="chooseType()">确定</span>
-        </div>
-      </div>
-    </div>
-
-    <!--        产品场景筛选-->
-    <div class="tip detail_tip" v-show="chooseScenVisible">
-      <div class="content">
-        <div class="tip_con tip_pro_con">
-          <p class="tip_pro_name">场景</p>
-          <ul class="tip_pro_list">
-            <li :class="sceneId==-1?'active':''" @click="chooseScen(-1)">全部
-              <span class="icon-check"></span>
-            </li>
-            <li v-for="(item,index) in scenList" :class="item.id==sceneId?'active':''"
-                @click="chooseScen(item.id)">{{item.name}}
-              <span class="icon-check"></span>
-            </li>
-          </ul>
-        </div>
-        <div class="tip_foot tip_foot_detail tip_foot_flex">
-          <span @click="dropScenCancel">取消</span>
-          <span @click="eqList(1)">确定</span>
-        </div>
-      </div>
-    </div>
-
-  </div>
 </template>
 <script>
     import menu from '../menu/menu'
@@ -323,7 +323,7 @@
                     if (msg.code == 200) {
                         if (this.list) {
                             if (msg.body.results.length > 0) {
-                                this.list.push(msg.body.results)
+                                this.list = this.list.concat(msg.body.results)
                             }
                         } else {
                             this.list = msg.body.results;
@@ -506,34 +506,34 @@
 </script>
 
 <style scoped>
-  @import url('../../assets/list.css');
-  @import url('./equipment.css');
-  @import url('../tip/tip.css');
-  @import url('./detail/detail.css');
+    @import url('../../assets/list.css');
+    @import url('./equipment.css');
+    @import url('../tip/tip.css');
+    @import url('./detail/detail.css');
 
-  .noInfo {
-    margin-top: 100px;
-  }
+    .noInfo {
+        margin-top: 100px;
+    }
 
-  /*.list {*/
-  /*margin-bottom: 55px;*/
-  /*}*/
+    /*.list {*/
+    /*margin-bottom: 55px;*/
+    /*}*/
 
-  .itemTop {
-    min-height: 20px;
-  }
+    .itemTop {
+        min-height: 20px;
+    }
 
-  .loadMoreWrapper {
-    padding-bottom: 65px;
-  }
+    .loadMoreWrapper {
+        padding-bottom: 65px;
+    }
 
-  .online {
-    font-size: 12px;
-    color: #3C7CFF;
-  }
+    .online {
+        font-size: 12px;
+        color: #3C7CFF;
+    }
 
-  .online_remove {
-    color: red;
-  }
+    .online_remove {
+        color: red;
+    }
 </style>
 

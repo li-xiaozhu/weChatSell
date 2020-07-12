@@ -28,6 +28,10 @@ import AboutUs from '../components/about/about'
 import FreshAirDetail from '../components/freshAir/detail/index'
 import FreshAirStatus from '../components/freshAir/status/index'
 import FreshAirParams from '../components/freshAir/params/index'
+import FreshAirStatus1 from '../components/freshAir/status/index'
+import FreshAirStatus2 from '../components/freshAir/status/status2'
+import FreshAirStatus3 from '../components/freshAir/status/status3'
+import FreshAirStatus4 from '../components/freshAir/status/status4'
 
 Vue.use(Router);
 
@@ -235,18 +239,51 @@ export default new Router({
                 isLogin: true,
             }
         },
+        // {
+        //     path: Path.FreshAirStatus,
+        //     name: 'FreshAirStatus',
+        //     component: FreshAirStatus,
+        //     meta: {
+        //         isLogin: true,
+        //         title: '系统状态'
+        //     }
+        // },
         {
-            path: Path.FreshAirStatus,
-            name: 'FreshAirStatus',
-            component: FreshAirStatus,
-            meta: {
-                isLogin: true,
-                title: '系统状态'
-            }
-        }, {
             path: Path.FreshAirParams,
             name: 'FreshAirParams',
             component: FreshAirParams,
+            meta: {
+                isLogin: true,
+                title: '用户参数'
+            }
+        }, {
+            path: Path.FreshStatus1,
+            name: 'FreshAiStatus1',
+            component: FreshAirStatus1,
+            meta: {
+                isLogin: true,
+                title: '用户参数'
+            }
+        }, {
+            path: Path.FreshStatus2,
+            name: 'FreshAirStatus2',
+            component: FreshAirStatus2,
+            meta: {
+                isLogin: true,
+                title: '用户参数'
+            }
+        }, {
+            path: Path.FreshStatus3,
+            name: 'FreshAirStatus3',
+            component: FreshAirStatus3,
+            meta: {
+                isLogin: true,
+                title: '用户参数'
+            }
+        }, {
+            path: Path.FreshStatus4,
+            name: 'FreshAirStatus4',
+            component: FreshAirStatus4,
             meta: {
                 isLogin: true,
                 title: '用户参数'

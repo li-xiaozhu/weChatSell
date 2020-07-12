@@ -4,49 +4,49 @@
     <router-link :to="'/equipment'">
       <p class="freshHome">主页</p>
     </router-link>
-    <p class="freshTitle">环境空气质量</p>
+    <p class="freshTitle">模拟输入量</p>
     <div class="list list_normal list_no_arrow list_info">
       <div class="item">
         <div class="clear">
-          <p>甲醛
+          <p>送风威压
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiaquan?eqParams.jiaquan:0}}</span>mg/m3
+              <span class="black">0.00</span>KPa
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>TVOC
+          <p>回风温度
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.tvoc?eqParams.tvoc:0}}</span>mg/m3
+              <span class="black">0.00</span>mg/m3
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>C6H6
+          <p>回风湿度
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.c6h6?eqParams.c6h6:0}}</span>mg/m3
+              <span class="black">0.00</span>mg/m3
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>PM2.5
+          <p>出风温度
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.pm25?eqParams.pm25:0}}</span>mg/m3
+              <span class="black">0.00</span>mg/m3
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>pm10
+          <p>露点温度
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.pm10?eqParams.pm10:0}}</span>mg/m3
+              <span class="black">0.00</span>mg/m3
             </span>
           </p>
         </div>
@@ -54,27 +54,54 @@
 
       <div class="item">
         <div class="clear">
-          <p>温度
+          <p>加湿器温度
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.wendu?eqParams.wendu:0}}</span>℃
+              <span class="black">56</span>℃
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>湿度
+          <p>顶棚一次出水
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.shidu?eqParams.shidu:0}}</span>%
+              <span class="black">0.00</span>%
             </span>
           </p>
         </div>
       </div>
       <div class="item">
         <div class="clear">
-          <p>C02
+          <p>定棚二次进水
             <span class="right">
-              <span class="black">{{eqParams&&eqParams.c02?eqParams.c02:0}}</span>ppm
+              <span class="black">0.00</span>ppm
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>定棚二次出水
+            <span class="right">
+              <span class="black">0.00</span>ppm
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>表冷器进水
+            <span class="right">
+              <span class="black">0.00</span>ppm
+            </span>
+          </p>
+        </div>
+      </div>
+      <div class="item">
+        <div class="clear">
+          <p>表冷器出水
+            <span class="right">
+              <span class="black">0.00</span>ppm
             </span>
           </p>
         </div>

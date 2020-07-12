@@ -244,8 +244,8 @@
   </div>
 </template>
 <script>
-    import Swiper from 'swiper';
-    import 'swiper/dist/css/swiper.css';
+    // import Swiper from 'swiper';
+    // import 'swiper/dist/css/swiper.css';
     import {Range, Toast, Popup, Radio, Indicator} from 'mint-ui';
 
     export default {
@@ -743,19 +743,19 @@
             },
             timer() {
                 let self = this;
-                new Swiper('.swiper-container', {
-                    initialSlide: this.degrees,
-                    slidesPerView: 'auto',
-                    centeredSlides: true,
-                    slideToClickedSlide: true,
-                    on: {
-                        slideChangeTransitionEnd: function () {
-                            // self.degrees = this.activeIndex;
-                            // self.watchDegree();
-                            // self.initDraw();
-                        },
-                    },
-                })
+                // new Swiper('.swiper-container', {
+                //     initialSlide: this.degrees,
+                //     slidesPerView: 'auto',
+                //     centeredSlides: true,
+                //     slideToClickedSlide: true,
+                //     on: {
+                //         slideChangeTransitionEnd: function () {
+                //             // self.degrees = this.activeIndex;
+                //             // self.watchDegree();
+                //             // self.initDraw();
+                //         },
+                //     },
+                // })
             },
             drawCircle() {
                 var canvas = document.getElementById('clock');
@@ -1040,7 +1040,7 @@
                     this.valueDegrees = arrD;
                     this.eqModeVal = String(data.equipmentMode)
                 }
-            }, 
+            },
             socketclose: function () {
                 console.log("socket已经关闭")
                 this.socket.close()
