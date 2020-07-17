@@ -24,7 +24,7 @@ Vue.config.productionTip = false;
 // 判断是否登录
 router.beforeEach(function (to, from, next) {
   if (to.meta.isLogin) {
-    Api.isLogin();
+    // Api.isLogin();
   }
   next();
 })

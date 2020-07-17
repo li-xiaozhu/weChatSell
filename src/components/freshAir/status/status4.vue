@@ -1,216 +1,359 @@
 <template>
   <div class="headFixed freshStatus">
     <HeadNav title="系统状态"></HeadNav>
-      <router-link :to="'/equipment'">
-          <p class="freshHome">主页</p>
-      </router-link>
-    <!--<p class="freshTitle">环境空气质量</p>-->
-    <div class="list list_normal list_no_arrow list_info">
-      <div class="item">
-        <div class="clear">
-          <p>三相保护
-            <span class="right">
-              <span class="black">X01</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>防冻开关1
-            <span class="right">
-              <span class="black">X01</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>防冻开关2
-            <span class="right">
-              <span class="black">X02</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>燃气报警
-            <span class="right">
-              <span class="black">X03</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>漏水报警
-            <span class="right">
-              <span class="black">X04</span>
-            </span>
-          </p>
-        </div>
-      </div>
+    <router-link :to="'/equipment'">
+      <p class="freshHome">主页</p>
+    </router-link>
 
-      <div class="item">
-        <div class="clear">
-          <p>露点报警
-            <span class="right">
-              <span class="black">X05</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>加湿器漏水
-            <span class="right">
-              <span class="black">X06</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>加湿器过热
-            <span class="right">
-              <span class="black">X07</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>加湿器水位上限
-            <span class="right">
-              <span class="black">X10</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>加湿器水位下限
-            <span class="right">
-              <span class="black">X11</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>高效过滤
-            <span class="right">
-              <span class="black">X12</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>初中效过滤
-            <span class="right">
-              <span class="black">X13</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>送风风压过大
-            <span class="right">
-              <span class="black">X14</span>
-            </span>
-          </p>
-        </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>负氧离子
-            <span class="right">
+    <div v-if="pageNum==1">
+      <!--<p class="freshTitle">环境空气质量</p>-->
+      <div class="list list_normal list_no_arrow list_info">
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>三相保护-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X01</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>防冻开关1-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X01</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>防冻开关2-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X02</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>燃气报警-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X03</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>漏水报警-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X04</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>露点报警-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X05</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>加湿器漏水-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X06</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>加湿器过热-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X07</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>加湿器水位上限-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X10</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>加湿器水位下限-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X11</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>高效过滤-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X12</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>初中效过滤-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X13</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <!--      <div class="item">-->
+        <!--        <div class="clear">-->
+        <!--          <p>送风风压过大-->
+        <!--            <span class="right">-->
+        <!--              <span class="black">X14</span>-->
+        <!--            </span>-->
+        <!--          </p>-->
+        <!--        </div>-->
+        <!--      </div>-->
+        <div class="item">
+          <div class="clear">
+            <p>负氧离子
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.fuyanglizi?eqParams.fuyanglizi:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>顶棚辐射泵
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>顶棚辐射泵
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.dingpengfushebeng?eqParams.dingpengfushebeng:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>一次泵
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>一次泵
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.yicibeng?eqParams.yicibeng:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>加湿器排水
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>加湿器排水
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.jiashiqipaishui?eqParams.jiashiqipaishui:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>加湿器补水
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>加湿器补水
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.jiashiqibushui?eqParams.jiashiqibushui:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>加湿器加湿
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>加湿器加湿
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.jiashiqijiashi?eqParams.jiashiqijiashi:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>精加热
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>精加热
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.jingjiare?eqParams.jingjiare:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>排风机
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>排风机
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.paifengji?eqParams.paifengji:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>新风机
-            <span class="right">
+        <div class="item">
+          <div class="clear">
+            <p>新风机
+              <span class="right">
               <span class="black">{{eqParams&&eqParams.xinfengji?eqParams.xinfengji:0}}</span>
             </span>
-          </p>
+            </p>
+          </div>
         </div>
       </div>
     </div>
 
-    <!--<div class="page">-->
-      <!--<div class="btn-primary pagePrev">上一页</div>-->
-      <!--<div class="btn-orange pageNext">下一页</div>-->
-    <!--</div>-->
+
+    <div v-if="pageNum==2">
+      <p class="freshTitle">模拟输入量</p>
+      <div class="list list_normal list_no_arrow list_info">
+        <div class="item">
+          <div class="clear">
+            <p>送风威压
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.songfengweiya?eqParams.songfengweiya:0}}</span>KPa
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>回风温度
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.huifengwendu?eqParams.huifengwendu:0}}</span>mg/m3
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>回风湿度
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.huifengshidu?eqParams.huifengshidu:0}}</span>mg/m3
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>出风温度
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.chufengwendu?eqParams.chufengwendu:0}}</span>mg/m3
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>露点温度
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.ludianwendu?eqParams.ludianwendu:0}}</span>mg/m3
+            </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="item">
+          <div class="clear">
+            <p>加湿器温度
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.jiashiqiwendu?eqParams.jiashiqiwendu:0}}</span>℃
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>顶棚一次出水
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.dingpengyicichushui?eqParams.dingpengyicichushui:0}}</span>%
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>定棚二次进水
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.dingpengercijinshui?eqParams.dingpengercijinshui:0}}</span>ppm
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>定棚二次出水
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.dingpengercichushui?eqParams.dingpengercichushui:0}}</span>ppm
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>表冷器进水
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.biaolengqijinshui?eqParams.biaolengqijinshui:0}}</span>ppm
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>表冷器出水
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.biaolengqichushui?eqParams.biaolengqichushui:0}}</span>ppm
+            </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div v-if="pageNum==3">
+      <p class="freshTitle">模拟量输出</p>
+      <div class="list list_normal list_no_arrow list_info">
+        <div class="item">
+          <div class="clear">
+            <p>送风机
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.songfengji?eqParams.songfengji:0}}</span>mg/m3
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>表冷器三通阀
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.biaolengqisantongfa?eqParams.biaolengqisantongfa:0}}</span>mg/m3
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>辐射三通阀
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.fushesantongfa?eqParams.fushesantongfa:0}}</span>mg/m3
+            </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page">
+      <div class="btn-primary pagePrev" @click="goPrev()" v-if="pageNum>1">上一页</div>
+      <div class="btn-orange pageNext" @click="goNext()" v-if="pageNum<3">下一页</div>
+    </div>
 
   </div>
 </template>
@@ -229,20 +372,21 @@
                 },
                 path: "ws://www.zhilianyueju.com/websocketDemo/",
                 socket: "",
-                eqParams: null
+                eqParams: null,
+                pageNum: 1
             }
         },
         components: {
             'HeadNav': HeadNav
         },
         mounted() {
-            this.readWaterTemerature();
+            // this.readWaterTemerature();
             this.firstRequest = true;
             this.getFreshEquipmentDetail();
         },
 
         beforeDestroy() {
-            this.socketclose();
+            // this.socketclose();
         },
         methods: {
             readWaterTemerature() {
@@ -314,6 +458,19 @@
                     }
                 })
             },
+            goPrev() {
+                let pageNum = this.pageNum;
+                pageNum--;
+                if (pageNum <= 1) {
+                    pageNum = 1
+                }
+                this.pageNum = pageNum;
+            },
+            goNext() {
+                let pageNum = this.pageNum;
+                pageNum++;
+                this.pageNum = pageNum;
+            }
         }
     }
 </script>

@@ -46,7 +46,7 @@
             </div>
             <!--<div><span class="item">运行曲线</span></div>-->
             <div>
-                <router-link :to=" PATH.goFreshDetail()+this.getId()">
+                <router-link :to="'/fresh/status4/'+this.getId()">
                     <span class="item">1#系统状态</span>
                 </router-link>
             </div>
@@ -56,12 +56,12 @@
                 </router-link>
             </div>
             <div>
-                <router-link :to="'/fresh/status2/'+this.getId()">
+                <router-link :to="'/fresh/status4/'+this.getId()">
                     <span class="item">1#热泵状态</span>
                 </router-link>
             </div>
             <div>
-                <router-link :to="'/fresh/status3/'+this.getId()">
+                <router-link :to="'/fresh/status4/'+this.getId()">
                     <span class="item">2#热泵状态</span>
                 </router-link>
             </div>
