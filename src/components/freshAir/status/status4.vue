@@ -216,7 +216,7 @@
       <div class="list list_normal list_no_arrow list_info">
         <div class="item">
           <div class="clear">
-            <p>送风威压
+            <p>送风微压
               <span class="right">
               <span class="black">{{eqParams&&eqParams.songfengweiya?eqParams.songfengweiya:0}}</span>KPa
             </span>
@@ -227,7 +227,7 @@
           <div class="clear">
             <p>回风温度
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.huifengwendu?eqParams.huifengwendu:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.huifengwendu?eqParams.huifengwendu:0}}</span>℃
             </span>
             </p>
           </div>
@@ -236,7 +236,7 @@
           <div class="clear">
             <p>回风湿度
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.huifengshidu?eqParams.huifengshidu:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.huifengshidu?eqParams.huifengshidu:0}}</span>%
             </span>
             </p>
           </div>
@@ -245,7 +245,7 @@
           <div class="clear">
             <p>出风温度
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.chufengwendu?eqParams.chufengwendu:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.chufengwendu?eqParams.chufengwendu:0}}</span>℃
             </span>
             </p>
           </div>
@@ -254,7 +254,7 @@
           <div class="clear">
             <p>露点温度
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.ludianwendu?eqParams.ludianwendu:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.ludianwendu?eqParams.ludianwendu:0}}</span>℃
             </span>
             </p>
           </div>
@@ -273,7 +273,7 @@
           <div class="clear">
             <p>顶棚一次出水
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.dingpengyicichushui?eqParams.dingpengyicichushui:0}}</span>%
+              <span class="black">{{eqParams&&eqParams.dingpengyicichushui?eqParams.dingpengyicichushui:0}}</span>℃
             </span>
             </p>
           </div>
@@ -282,7 +282,7 @@
           <div class="clear">
             <p>定棚二次进水
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.dingpengercijinshui?eqParams.dingpengercijinshui:0}}</span>ppm
+              <span class="black">{{eqParams&&eqParams.dingpengercijinshui?eqParams.dingpengercijinshui:0}}</span>℃
             </span>
             </p>
           </div>
@@ -291,7 +291,7 @@
           <div class="clear">
             <p>定棚二次出水
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.dingpengercichushui?eqParams.dingpengercichushui:0}}</span>ppm
+              <span class="black">{{eqParams&&eqParams.dingpengercichushui?eqParams.dingpengercichushui:0}}</span>℃
             </span>
             </p>
           </div>
@@ -300,7 +300,7 @@
           <div class="clear">
             <p>表冷器进水
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.biaolengqijinshui?eqParams.biaolengqijinshui:0}}</span>ppm
+              <span class="black">{{eqParams&&eqParams.biaolengqijinshui?eqParams.biaolengqijinshui:0}}</span>℃
             </span>
             </p>
           </div>
@@ -309,7 +309,7 @@
           <div class="clear">
             <p>表冷器出水
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.biaolengqichushui?eqParams.biaolengqichushui:0}}</span>ppm
+              <span class="black">{{eqParams&&eqParams.biaolengqichushui?eqParams.biaolengqichushui:0}}</span>℃
             </span>
             </p>
           </div>

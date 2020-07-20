@@ -32,10 +32,10 @@
                 showDegrees: false,
                 degrees: 0,
                 valueDegrees: [],
-                coolMin: 40,
-                coolMax: 60,
-                heatMin: 45,
-                heatMax: 65,
+                coolMin: 45,
+                coolMax: 65,
+                heatMin: 40,
+                heatMax: 60,
                 hotMain: [
                     {
                         flex: 1,
