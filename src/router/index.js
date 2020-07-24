@@ -48,7 +48,8 @@ export default new Router({
             component: Register,
             meta: {
                 isLogin: false,
-                title: '注册'
+                title: '注册',
+                keepAlive: false
             }
         },
         {
@@ -57,7 +58,8 @@ export default new Router({
             component: Forget,
             meta: {
                 isLogin: false,
-                title: '忘记密码'
+                title: '忘记密码',
+                keepAlive: false
             }
         },
         {
@@ -66,7 +68,8 @@ export default new Router({
             component: Login,
             meta: {
                 isLogin: false,
-                title: '登录'
+                title: '登录',
+                keepAlive: false
             }
         },
         {
@@ -74,7 +77,8 @@ export default new Router({
             name: 'Equipment',
             component: Equipment,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: true
             }
         },
         {
@@ -82,7 +86,8 @@ export default new Router({
             name: 'Add',
             component: Add,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -90,7 +95,8 @@ export default new Router({
             name: 'SceneMange',
             component: SceneMange,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -98,7 +104,8 @@ export default new Router({
             name: 'RoomMange',
             component: RoomMange,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -106,7 +113,8 @@ export default new Router({
             name: 'ChooseHome',
             component: ChooseHome,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -114,7 +122,8 @@ export default new Router({
             name: 'ChooseRoom',
             component: ChooseRoom,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -122,7 +131,8 @@ export default new Router({
             name: 'Info',
             component: Info,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -130,7 +140,8 @@ export default new Router({
             name: 'Status',
             component: Status,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -138,7 +149,8 @@ export default new Router({
             name: 'Detail',
             component: Detail,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -146,7 +158,8 @@ export default new Router({
             name: 'Timer',
             component: Timer,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -154,7 +167,8 @@ export default new Router({
             name: 'AddTimer',
             component: AddTimer,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -162,7 +176,8 @@ export default new Router({
             name: 'Repair',
             component: Repair,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -170,7 +185,8 @@ export default new Router({
             name: 'RepairWx',
             component: RepairWx,
             meta: {
-                isLogin: false
+                isLogin: false,
+                keepAlive: false
             }
         },
         {
@@ -178,7 +194,8 @@ export default new Router({
             name: 'Fault',
             component: Fault,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -186,7 +203,8 @@ export default new Router({
             name: 'Personal',
             component: Personal,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -194,7 +212,8 @@ export default new Router({
             name: 'Self',
             component: Self,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -203,7 +222,8 @@ export default new Router({
             component: ResetPhone,
             meta: {
                 isLogin: true,
-                title: '修改手机'
+                title: '修改手机',
+                keepAlive: false
             }
         },
         {
@@ -211,7 +231,8 @@ export default new Router({
             name: 'Service',
             component: Service,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -219,7 +240,8 @@ export default new Router({
             name: 'ServiceDetail',
             component: ServiceDetail,
             meta: {
-                isLogin: true
+                isLogin: true,
+                keepAlive: false
             }
         },
         {
@@ -228,7 +250,8 @@ export default new Router({
             component: AboutUs,
             meta: {
                 isLogin: true,
-                title: '关于我们'
+                title: '关于我们',
+                keepAlive: false
             }
         },
         {
@@ -237,6 +260,7 @@ export default new Router({
             component: FreshAirDetail,
             meta: {
                 isLogin: true,
+                keepAlive: false
             }
         },
         // {
@@ -254,7 +278,8 @@ export default new Router({
             component: FreshAirParams,
             meta: {
                 isLogin: true,
-                title: '用户参数'
+                title: '用户参数',
+                keepAlive: false
             }
         }, {
             path: Path.FreshStatus1,
@@ -262,7 +287,8 @@ export default new Router({
             component: FreshAirStatus1,
             meta: {
                 isLogin: true,
-                title: '用户参数'
+                title: '用户参数',
+                keepAlive: false
             }
         }, {
             path: Path.FreshStatus2,
@@ -270,7 +296,8 @@ export default new Router({
             component: FreshAirStatus2,
             meta: {
                 isLogin: true,
-                title: '用户参数'
+                title: '用户参数',
+                keepAlive: false
             }
         }, {
             path: Path.FreshStatus3,
@@ -278,7 +305,8 @@ export default new Router({
             component: FreshAirStatus3,
             meta: {
                 isLogin: true,
-                title: '用户参数'
+                title: '用户参数',
+                keepAlive: false
             }
         }, {
             path: Path.FreshStatus4,
@@ -286,7 +314,8 @@ export default new Router({
             component: FreshAirStatus4,
             meta: {
                 isLogin: true,
-                title: '用户参数'
+                title: '用户参数',
+                keepAlive: false
             }
         },
         {
