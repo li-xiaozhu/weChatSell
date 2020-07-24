@@ -57,26 +57,26 @@
           <div class="fresh_img"></div>
           <div class="fresh_setDegree clear">
             <!--温度设定-->
-            <vEqSetDegree :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqSetDegree>
+            <vEqSetDegree :eqInfo="eqInfo" :id="this.getId()" @init="init"></vEqSetDegree>
 
             <!--湿度设定-->
-            <vEqSetHumidity :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqSetHumidity>
+            <vEqSetHumidity :eqInfo="eqInfo" :id="this.getId()" @init="init"></vEqSetHumidity>
           </div>
         </div>
 
         <div class="eqComType">
           <ul class="clear">
             <!--开关机-->
-            <vEqSwitchMachine :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqSwitchMachine>
+            <vEqSwitchMachine :eqInfo="eqInfo" :id="this.getId()" @init="init"></vEqSwitchMachine>
 
             <!--模式切换-->
-            <vEqModal :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqModal>
+            <vEqModal :eqInfo="eqInfo" :id="this.getId()" @init="init"></vEqModal>
 
             <!--报警-->
-            <vEqAlarm :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqAlarm>
+            <vEqAlarm :eqInfo="eqInfo" :id="this.getId()" @init="init"></vEqAlarm>
 
             <!--定时-->
-            <vEqTimer :eqInfo="eqInfo" :id="this.getId()" @init="eqDetail"></vEqTimer>
+            <vEqTimer :eqInfo="eqInfo" :id="this.getId()" @init="init"></vEqTimer>
           </ul>
         </div>
 

@@ -58,22 +58,25 @@
           <ul class="setDegree clear">
             <li class="left">
                         <span class="text-center eqDegree"
-                              v-show="eqInfo.equipmentMode==1&&eqInfo.equipmentCoolTemperature">
+                              v-show="eqInfo.equipmentMode==1">
                             <span>
-                                {{eqInfo.equipmentCoolTemperature}}<span class="unit">℃</span>
+                                {{eqInfo.equipmentCoolTemperature?eqInfo.equipmentCoolTemperature:0}}
+                              <span class="unit">℃</span>
                             </span>设定温度
                         </span>
               <span class="text-center eqDegree"
-                    v-show="eqInfo.equipmentMode==2&&eqInfo.equipmentHeatTemperature">
+                    v-show="eqInfo.equipmentMode==2">
                             <span>
-                                {{eqInfo.equipmentHeatTemperature}}<span class="unit">℃</span>
+                                {{eqInfo.equipmentHeatTemperature?eqInfo.equipmentHeatTemperature:0}}
+                              <span class="unit">℃</span>
                             </span>设定温度
                         </span>
 
               <span class="text-center eqDegree"
-                    v-show="eqInfo.equipmentMode==3&&eqInfo.equipmentHeatTemperature">
+                    v-show="eqInfo.equipmentMode==3">
                             <span>
-                                {{eqInfo.equipmentHeatTemperature}}<span class="unit">℃</span>
+                                {{eqInfo.equipmentHeatTemperature?eqInfo.equipmentHeatTemperature:0}}
+                              <span class="unit">℃</span>
                             </span>设定温度
                         </span>
             </li>
@@ -413,7 +416,7 @@
             }
             this.hotMain[0].values = mainHot;
 
-            // 风盘温度
+            // 风盘温度5-35
             let fanDegree = [];
             for (let i = 5; i <= 35; i++) {
                 fanDegree.push(String(i));
@@ -437,7 +440,7 @@
             init() {
                 this.drawCircle();
                 if (this.getId()) {
-                    this.eqDetail(this.eqId);
+                    this.eqDetail(this.getId());
                 }
             },
             getId() {
