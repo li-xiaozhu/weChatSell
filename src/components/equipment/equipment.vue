@@ -262,7 +262,7 @@
             },
             dropToggleScen() {
                 this.chooseScenVisible = true;
-                this.sceneId = this.currentSceneId;
+                // this.sceneId = this.currentSceneId;
             },
             dropScenCancel() {
                 this.chooseScenVisible = false;
@@ -298,6 +298,7 @@
                         this.hasNextPage = msg.body.hasNextPage;
                         this.loading = false;
                         this.scrollDisable = false;
+                        this.chooseScenVisible = false;
                     } else {
                         this.showEmpty = true;
                     }
