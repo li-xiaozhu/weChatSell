@@ -29,12 +29,13 @@
           <div class="clear">
             <p>工作模式
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.gongzuomoshirebeng1?'制热':'制冷'}}</span>
+                <span class="black" v-if="eqParams&&eqParams.gongzuomoshirebeng1==1">制冷</span>
+                <span class="black" v-if="eqParams&&eqParams.gongzuomoshirebeng1==2">制热</span>
             </span>
             </p>
           </div>
         </div>
-        <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==0">
+        <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==1">
           <div class="clear">
             <p>制冷温度设置
               <span class="right"
@@ -47,7 +48,7 @@
             </p>
           </div>
         </div>
-        <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==1">
+        <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==2">
           <div class="clear">
             <p>制热温度设置
               <span class="right"

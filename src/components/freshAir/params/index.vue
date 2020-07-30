@@ -52,18 +52,17 @@
           <span class="item">1#热泵状态</span>
         </router-link>
       </div>
-      <div>
-        <div v-if="eqParams&&eqParams.youcongji">
-          <router-link :to="'/fresh/status4/'+this.getId()">
-            <span class="item">2#系统状态</span>
-          </router-link>
-        </div>
-        <div v-if="eqParams&&eqParams.rebengshuliang">
-          <router-link :to="'/fresh/status5/'+this.getId()">
-            <span class="item">2#热泵状态</span>
-          </router-link>
-        </div>
+      <div v-if="eqParams&&eqParams.youcongji">
+        <router-link :to="'/fresh/status4/'+this.getId()">
+          <span class="item">2#系统状态</span>
+        </router-link>
       </div>
+      <div v-if="eqParams&&eqParams.rebengshuliang">
+        <router-link :to="'/fresh/status5/'+this.getId()">
+          <span class="item">2#热泵状态</span>
+        </router-link>
+      </div>
+<!--      <p style="width: 100%;height: 1px;float: left;"></p>-->
       <div v-if="eqInfo&&eqInfo.isAlarm">
         <router-link :to="'/fault/'+this.getId()">
           <span class="item">故障档案</span>
