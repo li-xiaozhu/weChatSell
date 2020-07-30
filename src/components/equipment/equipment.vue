@@ -219,6 +219,9 @@
                     }, {
                         name: '温控设备',
                         value: '2'
+                    }, {
+                        name: '多功能设备',
+                        value: '4'
                     }
                 ],
                 chooseList: [
@@ -461,6 +464,10 @@
                 if (equipmentType == 3) {
                     this.$router.push({
                         path: PATH.goFreshDetail() + id
+                    })
+                } else if (equipmentType == 4) {
+                    this.$router.push({
+                        path: PATH.goFreshStatus1() + id
                     })
                 } else {
                     this.$router.push({

@@ -32,6 +32,7 @@ import FreshAirStatus1 from '../components/freshAir/status/index'
 import FreshAirStatus2 from '../components/freshAir/status/status2'
 import FreshAirStatus3 from '../components/freshAir/status/status3'
 import FreshAirStatus4 from '../components/freshAir/status/status4'
+import FreshAirStatus5 from '../components/freshAir/status/status5'
 
 Vue.use(Router);
 
@@ -315,6 +316,16 @@ export default new Router({
             meta: {
                 isLogin: true,
                 title: '用户参数',
+                keepAlive: false
+            }
+        },
+        {
+            path: Path.FreshStatus5,
+            name: 'FreshAirStatus5',
+            component: FreshAirStatus5,
+            meta: {
+                isLogin: true,
+                title: '热泵状态',
                 keepAlive: false
             }
         },

@@ -130,7 +130,7 @@
           <div class="clear">
             <p>负氧离子
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.fuyanglizi?eqParams.fuyanglizi:0}}</span>
+              <span class="black">{{eqParams&&eqParams.fuyanglizi?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -139,7 +139,7 @@
           <div class="clear">
             <p>顶棚辐射泵
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.dingpengfushebeng?eqParams.dingpengfushebeng:0}}</span>
+              <span class="black">{{eqParams&&eqParams.dingpengfushebeng?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -148,7 +148,7 @@
           <div class="clear">
             <p>一次泵
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.yicibeng?eqParams.yicibeng:0}}</span>
+              <span class="black">{{eqParams&&eqParams.yicibeng?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -157,7 +157,7 @@
           <div class="clear">
             <p>加湿器排水
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiashiqipaishui?eqParams.jiashiqipaishui:0}}</span>
+              <span class="black">{{eqParams&&eqParams.jiashiqipaishui?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -166,7 +166,7 @@
           <div class="clear">
             <p>加湿器补水
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiashiqibushui?eqParams.jiashiqibushui:0}}</span>
+              <span class="black">{{eqParams&&eqParams.jiashiqibushui?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -175,7 +175,7 @@
           <div class="clear">
             <p>加湿器加湿
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.jiashiqijiashi?eqParams.jiashiqijiashi:0}}</span>
+              <span class="black">{{eqParams&&eqParams.jiashiqijiashi?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -184,7 +184,7 @@
           <div class="clear">
             <p>精加热
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.jingjiare?eqParams.jingjiare:0}}</span>
+              <span class="black">{{eqParams&&eqParams.jingjiare?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -193,7 +193,7 @@
           <div class="clear">
             <p>排风机
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.paifengji?eqParams.paifengji:0}}</span>
+              <span class="black">{{eqParams&&eqParams.paifengji?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -202,7 +202,7 @@
           <div class="clear">
             <p>新风机
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.xinfengji?eqParams.xinfengji:0}}</span>
+              <span class="black">{{eqParams&&eqParams.xinfengji?'开':'关'}}</span>
             </span>
             </p>
           </div>
@@ -324,7 +324,7 @@
           <div class="clear">
             <p>送风机
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.songfengji?eqParams.songfengji:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.songfengji?eqParams.songfengji:0}}</span>%
             </span>
             </p>
           </div>
@@ -333,7 +333,7 @@
           <div class="clear">
             <p>表冷器三通阀
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.biaolengqisantongfa?eqParams.biaolengqisantongfa:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.biaolengqisantongfa?eqParams.biaolengqisantongfa:0}}</span>%
             </span>
             </p>
           </div>
@@ -342,7 +342,7 @@
           <div class="clear">
             <p>辐射三通阀
               <span class="right">
-              <span class="black">{{eqParams&&eqParams.fushesantongfa?eqParams.fushesantongfa:0}}</span>mg/m3
+              <span class="black">{{eqParams&&eqParams.fushesantongfa?eqParams.fushesantongfa:0}}</span>%
             </span>
             </p>
           </div>

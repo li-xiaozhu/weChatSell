@@ -1,38 +1,83 @@
 <template>
-  <div class="headFixed">
-    <HeadNav title="设备状态"></HeadNav>
-    <div class="list list_normal list_no_arrow list_info">
-      <div class="item">
-        <div class="clear">
-          <p>用户侧回水温度 <span
-              class="right">{{this.info.sendInWaterTemerature?this.info.sendInWaterTemerature+'℃':'0℃'}}</span></p>
+  <div class="headFixed freshStatus">
+    <HeadNav title="热泵状态"></HeadNav>
+    <router-link :to="'/equipment'">
+      <p class="freshHome">主页</p>
+    </router-link>
+
+    <div>
+      <div class="list list_normal list_no_arrow list_info">
+        <div class="item">
+          <div class="clear">
+            <p>运行状态
+              <span class="right">
+              <span
+                  class="black">
+                {{eqParams&&eqParams.yunxingzhuangtairebeng1?
+                    eqParams.yunxingzhuangtairebeng1==1?'启动中':
+                    eqParams.yunxingzhuangtairebeng1==2?'运行中':
+                    eqParams.yunxingzhuangtairebeng1==3?'停机中':
+                    eqParams.yunxingzhuangtairebeng1==4?'严重故障':
+                    eqParams.yunxingzhuangtairebeng1==4?'防冻':'待机'
+                :'待机'
+                }}</span>
+            </span>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>用户侧出水温度 <span
-              class="right">{{this.info.sendOutWaterTemerature?this.info.sendOutWaterTemerature+'℃':'0℃'}}</span></p>
+        <div class="item">
+          <div class="clear">
+            <p>工作模式
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.gongzuomoshirebeng1?'制热':'制冷'}}</span>
+            </span>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>地源侧回水温度 <span
-              class="right">{{this.info.coolInWaterTemerature?this.info.coolInWaterTemerature+'℃':'0℃'}}</span></p>
+        <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==0">
+          <div class="clear">
+            <p>制冷温度设置
+              <span class="right" v-if="eqParams&&eqParams.zhilengwendushezhirebeng1">
+                <span class="black">{{eqParams.zhilengwendushezhirebeng1}}</span>℃
+              </span>
+              <span class="right" v-else>
+                <span class="black">—</span>
+              </span>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>地源侧出水温度 <span
-              class="right">{{this.info.coolOutWaterTemerature?this.info.coolOutWaterTemerature+'℃':'0℃'}}</span></p>
+        <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==1">
+          <div class="clear">
+            <p>制热温度设置
+              <span class="right">
+              <span
+                  class="black">{{eqParams&&(eqParams.zhirewendushezhirebeng1)?eqParams.zhirewendushezhirebeng1:0}}</span>℃
+            </span>
+            </p>
+          </div>
         </div>
-      </div>
-      <div class="item">
-        <div class="clear">
-          <p>环境温度 <span
-              class="right">{{this.info.equipmentRoomTemerature?this.info.equipmentRoomTemerature+'℃':'0℃'}}</span></p>
+        <div class="item">
+          <div class="clear">
+            <p>出水温度
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.chushuiwendurebeng1?eqParams.chushuiwendurebeng1:0}}</span>℃
+            </span>
+            </p>
+          </div>
+        </div>
+        <div class="item">
+          <div class="clear">
+            <p>回水温度
+              <span class="right">
+              <span
+                  class="black">{{eqParams&&eqParams.yunxingzhuangtairebeng1?eqParams.yunxingzhuangtairebeng1:0}}</span>℃
+            </span>
+            </p>
+          </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 <script>
@@ -50,18 +95,21 @@
                 },
                 path: "ws://www.zhilianyueju.com/websocketDemo/",
                 socket: "",
+                eqParams: null,
+                pageNum: 1
             }
         },
         components: {
             'HeadNav': HeadNav
         },
         mounted() {
-            this.readWaterTemerature();
+            // this.readWaterTemerature();
             this.firstRequest = true;
+            this.getFreshEquipmentDetail();
         },
 
         beforeDestroy() {
-            this.socketclose();
+            // this.socketclose();
         },
         methods: {
             readWaterTemerature() {
@@ -124,6 +172,27 @@
             socketclose: function () {
                 console.log("socket已经关闭")
                 this.socket.close()
+            },
+            getFreshEquipmentDetail() {
+                let id = this.getId();
+                this.Api.freshEquipmentDetail('equipmentId=' + id, (msg) => {
+                    if (msg.body) {
+                        this.eqParams = msg.body;
+                    }
+                })
+            },
+            goPrev() {
+                let pageNum = this.pageNum;
+                pageNum--;
+                if (pageNum <= 1) {
+                    pageNum = 1
+                }
+                this.pageNum = pageNum;
+            },
+            goNext() {
+                let pageNum = this.pageNum;
+                pageNum++;
+                this.pageNum = pageNum;
             }
         }
     }

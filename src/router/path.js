@@ -30,6 +30,7 @@ let Path = {
     FreshStatus2: '/fresh/status2/:id',
     FreshStatus3: '/fresh/status3/:id',
     FreshStatus4: '/fresh/status4/:id',
+    FreshStatus5: '/fresh/status5/:id',
 };
 
 let PATH = {
@@ -68,6 +69,9 @@ let PATH = {
     },
     goFreshStatus4() {
         return '/fresh/status4/'
+    },
+    goFreshStatus5() {
+        return '/fresh/status5/'
     }
 };
 

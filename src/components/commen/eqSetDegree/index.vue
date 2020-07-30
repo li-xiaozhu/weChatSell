@@ -64,16 +64,16 @@
         },
         beforeMount() {
             // 温度
-            // 新风制冷18-27
+            // 新风制冷23-30
             let mainCool = [];
-            for (let i = 18; i <= 27; i++) {
+            for (let i = 23; i <= 30; i++) {
                 mainCool.push(i);
             }
             this.coolMain[0].values = mainCool;
 
-            // 新风制热23-30
+            // 新风制热18-27
             let mainHot = [];
-            for (let i = 23; i <= 30; i++) {
+            for (let i = 18; i <= 27; i++) {
                 mainHot.push(String(i));
             }
             this.hotMain[0].values = mainHot;
