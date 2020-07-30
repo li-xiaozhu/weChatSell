@@ -37,7 +37,8 @@
         <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==0">
           <div class="clear">
             <p>制冷温度设置
-              <span class="right" v-if="eqParams&&eqParams.zhilengwendushezhirebeng1">
+              <span class="right"
+                    v-if="eqParams&&(eqParams.zhilengwendushezhirebeng1||eqParams.zhilengwendushezhirebeng1==0)">
                 <span class="black">{{eqParams.zhilengwendushezhirebeng1}}</span>℃
               </span>
               <span class="right" v-else>
@@ -49,10 +50,13 @@
         <div class="item" v-if="eqParams&&eqParams.gongzuomoshirebeng1==1">
           <div class="clear">
             <p>制热温度设置
-              <span class="right">
-              <span
-                  class="black">{{eqParams&&(eqParams.zhirewendushezhirebeng1)?eqParams.zhirewendushezhirebeng1:0}}</span>℃
-            </span>
+              <span class="right"
+                    v-if="eqParams&&(eqParams.zhirewendushezhirebeng1||eqParams.zhirewendushezhirebeng1==0)">
+                <span class="black">{{eqParams.zhirewendushezhirebeng1}}</span>℃
+              </span>
+              <span class="right" v-else>
+                <span class="black">—</span>
+              </span>
             </p>
           </div>
         </div>
@@ -70,7 +74,7 @@
             <p>回水温度
               <span class="right">
               <span
-                  class="black">{{eqParams&&eqParams.yunxingzhuangtairebeng1?eqParams.yunxingzhuangtairebeng1:0}}</span>℃
+                  class="black">{{eqParams&&eqParams.huishuiwendurebeng1?eqParams.huishuiwendurebeng1:0}}</span>℃
             </span>
             </p>
           </div>
