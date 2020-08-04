@@ -280,7 +280,7 @@
         </div>
         <div class="item">
           <div class="clear">
-            <p>定棚二次进水
+            <p>顶棚二次进水
               <span class="right">
               <span class="black">{{eqParams&&eqParams.dingpengercijinshui?eqParams.dingpengercijinshui:0}}</span>℃
             </span>
@@ -289,7 +289,7 @@
         </div>
         <div class="item">
           <div class="clear">
-            <p>定棚二次出水
+            <p>顶棚二次出水
               <span class="right">
               <span class="black">{{eqParams&&eqParams.dingpengercichushui?eqParams.dingpengercichushui:0}}</span>℃
             </span>

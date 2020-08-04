@@ -62,7 +62,7 @@
           <span class="item">2#热泵状态</span>
         </router-link>
       </div>
-<!--      <p style="width: 100%;height: 1px;float: left;"></p>-->
+      <p style="width: 100%;height: 1px;float: left;"></p>
       <div v-if="eqInfo&&eqInfo.isAlarm">
         <router-link :to="'/fault/'+this.getId()">
           <span class="item">故障档案</span>
