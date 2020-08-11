@@ -207,6 +207,15 @@
             </p>
           </div>
         </div>
+        <div class="item">
+          <div class="clear">
+            <p>除湿
+              <span class="right">
+              <span class="black">{{eqParams&&eqParams.chushi?'开':'关'}}</span>
+            </span>
+            </p>
+          </div>
+        </div>
       </div>
     </div>
 
