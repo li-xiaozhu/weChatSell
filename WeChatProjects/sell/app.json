@@ -1,0 +1,58 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/policy/policy",
+    "pages/orderSuccess/orderSuccess",
+    "pages/login/login",
+    "pages/order/order",
+    "pages/my/my",
+    "pages/myDetails/myDetails",
+    "pages/menu/menu",
+    "pages/menuList/menuList",
+    "pages/site/site",
+    "pages/siteEdit/siteEdit",
+    "pages/orderDetails/orderDetails",
+    "pages/income/income",
+    "pages/menuDetails/menuDetails",
+    "pages/feedback/feedback"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于小程序接口显示"
+    }
+  },
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#1296db",
+    "navigationBarTitleText": "大家都来卖",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar":{
+    "color": "#707070",
+    "selectedColor": "#1296db",
+    "borderStyle": "white",
+    "backgroundColor": "#ffffff",
+    "list":[{
+      "pagePath":"pages/index/index",
+      "text":"首页",
+      "iconPath": "/images/index.png",
+      "selectedIconPath": "/images/indexActive.png"
+    },{
+      "pagePath": "pages/menu/menu",
+      "text":"价目表",
+      "iconPath": "/images/menu.png",
+      "selectedIconPath": "/images/menuActive.png"
+    },{
+      "pagePath": "pages/my/my",
+      "text":"我的",
+      "iconPath": "/images/my.png",
+      "selectedIconPath": "/images/myActive.png"
+    }]
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
